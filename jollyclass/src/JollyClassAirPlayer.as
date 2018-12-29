@@ -9,6 +9,7 @@ package
 	import com.jollyclass.airplayer.util.LoggerUtils;
 	import com.jollyclass.airplayer.util.ParseDataUtils;
 	import com.jollyclass.airplayer.util.ShapeUtil;
+	
 	import flash.desktop.NativeApplication;
 	import flash.display.Loader;
 	import flash.display.LoaderInfo;
@@ -50,7 +51,7 @@ package
 		
 		public function onStart():void{
 			logger.info("airplayer onStart","onStart");
-			AneUtils.sendData(MessageConst.AIRPLYAER_START);
+			//AneUtils.sendData(MessageConst.AIRPLYAER_START);
 			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE,onInvokeHandler);
 			screenMaskShape=ShapeUtil.createShape();
 			addChild(screenMaskShape);
@@ -229,20 +230,28 @@ package
 			_dialog_mc=event.target.content as MovieClip;
 			addChild(_dialog_loader);
 			pauseMainSwf()
+			initDialogSwf();
+			stopTimer();
+			AneUtils.showToast("当前账户类型："+dataInfo.accountInfoFlag);
 			//根据账户的类型，显示不同的页面。
 			switch(dataInfo.accountInfoFlag)
 			{
 				case 0:
+				{
 					_dialog_mc.initConnectUI();
 					break;
+				}
 				case 1:
+				{
 					_dialog_mc.goServiceUI();
 					break;
+				}
 				default:
+				{
 					break;
+				}
 			}
-			initDialogSwf();
-			stopTimer();
+			
 		}
 		/**
 		 * 暂停主swf的播放，移除键盘事件和循环事件
@@ -262,7 +271,12 @@ package
 		}
 		protected function onDialogKeyDown(event:KeyboardEvent):void
 		{
-			switchKeyCode(event.keyCode);
+			event.keyCode=switchKeyCode(event.keyCode);
+			AneUtils.showToast("当前键值代码："+event.keyCode+":当前帧数"+_dialog_mc.currentFrame)
+			if (event.keyCode==SwfKeyCode.BACK_REFLECT_CODE) 
+			{
+				onDestory();
+			}
 			_dialog_mc.getParentMethod(this);
 		}
 		/**
@@ -298,7 +312,7 @@ package
 		public function onDestory():void
 		{
 			logger.info("onDestory","onDestory");
-			AneUtils.sendData(MessageConst.AIRPLAYER_EIXT);
+			//AneUtils.sendData(MessageConst.AIRPLAYER_EIXT);
 			NativeApplication.nativeApplication.exit(0);
 		}
 		
