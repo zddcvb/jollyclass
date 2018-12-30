@@ -5,7 +5,6 @@ package
 	import com.jollyclass.airplayer.constant.SwfKeyCode;
 	import com.jollyclass.airplayer.domain.InvokeDataInfo;
 	import com.jollyclass.airplayer.util.AneUtils;
-	import com.jollyclass.airplayer.util.FileUtils;
 	import com.jollyclass.airplayer.util.LoggerUtils;
 	import com.jollyclass.airplayer.util.ParseDataUtils;
 	import com.jollyclass.airplayer.util.ShapeUtil;
@@ -24,6 +23,7 @@ package
 	import flash.events.KeyboardEvent;
 	import flash.events.ProgressEvent;
 	import flash.events.TimerEvent;
+	import flash.filesystem.File;
 	import flash.net.URLRequest;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
@@ -51,10 +51,10 @@ package
 		
 		public function onStart():void{
 			logger.info("airplayer onStart","onStart");
-			//AneUtils.sendData(MessageConst.AIRPLYAER_START);
-			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE,onInvokeHandler);
+			AneUtils.sendData("airplayer start");
 			screenMaskShape=ShapeUtil.createShape();
 			addChild(screenMaskShape);
+			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE,onInvokeHandler);
 		}
 		/**
 		 * 接收android系统发送的消息
@@ -66,7 +66,7 @@ package
 			{
 				dataInfo=ParseDataUtils.parseDataFromSystem(args);
 				logger.info(dataInfo.toString(),"");
-				AneUtils.showToast(dataInfo.toString());
+				AneUtils.showShortToast(dataInfo.toString());
 				readFileFromAndroidDIC(dataInfo.swfPath);
 			}			
 		}
@@ -77,28 +77,44 @@ package
 		{
 			if (swfPath!=null) 
 			{
-				fileDataByteArray=FileUtils.readFile(swfPath);
-				loadSwfFileFromBytes(fileDataByteArray);
+				var file:File=new File(swfPath);
+				file.addEventListener(Event.COMPLETE,onFileCompleteHandler);
+				file.addEventListener(IOErrorEvent.IO_ERROR,onFileErrorHandler);
+				file.load();//load方法是异步加载，只有等load完成才能获取子swf文件的数据
 			}
+		}
+		protected  function onFileErrorHandler(event:IOErrorEvent):void
+		{
+			logger.info("file don't exit","onFileErrorHandler");
+			AneUtils.sendData(MessageConst.READ_FILE_ERROR);
+			NativeApplication.nativeApplication.exit(0);
+		}
+		
+		protected  function onFileCompleteHandler(event:Event):void
+		{
+			logger.info("onFileCompleteHandler","onFileCompleteHandler");
+			var fileData:ByteArray=event.currentTarget.data;	
+			AneUtils.showShortToast("fileData"+fileData.toString());
+			loadSwfFileFromBytes(fileData);
 		}
 		/**
 		 * 加载swf文件，通过bytearray方式
 		 */
-		private function loadSwfFileFromBytes(fileDataByteArray:ByteArray):void
+		private  function loadSwfFileFromBytes(fileDataByteArray:ByteArray):void
 		{
 			var _context:LoaderContext=new LoaderContext();
 			_context.allowCodeImport=true;
 			_context.applicationDomain=ApplicationDomain.currentDomain;
 			_loader.loadBytes(fileDataByteArray,_context);	
+			_loader.contentLoaderInfo.addEventListener(Event.INIT,onSwfInitHandler);
 			_loader.contentLoaderInfo.addEventListener(Event.COMPLETE,onCompleteHandler);
-			_loader.contentLoaderInfo.addEventListener(Event.INIT,onInitHandler);
 			_loader.contentLoaderInfo.addEventListener(ProgressEvent.PROGRESS,onProgressHandler);
 			_loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,onIOErrorHandler);
 		}
 		
-		protected function onInitHandler(event:Event):void
+		protected function onSwfInitHandler(event:Event):void
 		{
-			logger.info("load swf init","onInitHandler");
+			AneUtils.showShortToast("onSwfInitHandler");
 		}
 		
 		protected function onIOErrorHandler(event:IOErrorEvent):void
@@ -116,19 +132,19 @@ package
 		protected function onCompleteHandler(event:Event):void
 		{
 			logger.info("load swf complete","onCompleteHandler");
+			AneUtils.showShortToast("loadSwf onCompleteHandler");
 			var _loaderInfo:LoaderInfo=event.currentTarget as LoaderInfo;
+			addMainApplicationKeyEvent();
 			_mc = event.target.content as MovieClip;
-			removeChild(screenMaskShape);
 			addChild(_loader);
+			removeChild(screenMaskShape);
 			//开始计时
-			startTimer();
-			//开启键盘按键事件
-			addKeyEvent();
+			//startTimer();
 		}
 		/**
 		 * 开启主swf的键盘事件和循环事件
 		 */
-		private function addKeyEvent():void
+		private function addMainApplicationKeyEvent():void
 		{
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,onKeyDownHandler);
 			stage.addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);	
@@ -232,7 +248,7 @@ package
 			pauseMainSwf()
 			initDialogSwf();
 			stopTimer();
-			AneUtils.showToast("当前账户类型："+dataInfo.accountInfoFlag);
+			AneUtils.showShortToast("当前账户类型："+dataInfo.accountInfoFlag);
 			//根据账户的类型，显示不同的页面。
 			switch(dataInfo.accountInfoFlag)
 			{
@@ -272,7 +288,7 @@ package
 		protected function onDialogKeyDown(event:KeyboardEvent):void
 		{
 			event.keyCode=switchKeyCode(event.keyCode);
-			AneUtils.showToast("当前键值代码："+event.keyCode+":当前帧数"+_dialog_mc.currentFrame)
+			AneUtils.showShortToast("当前键值代码："+event.keyCode+":当前帧数"+_dialog_mc.currentFrame)
 			if (event.keyCode==SwfKeyCode.BACK_REFLECT_CODE) 
 			{
 				onDestory();
@@ -312,9 +328,8 @@ package
 		public function onDestory():void
 		{
 			logger.info("onDestory","onDestory");
-			//AneUtils.sendData(MessageConst.AIRPLAYER_EIXT);
+			AneUtils.sendData(MessageConst.AIRPLAYER_EIXT);
 			NativeApplication.nativeApplication.exit(0);
 		}
-		
 	}
 }
