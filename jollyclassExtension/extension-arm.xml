@@ -1,0 +1,13 @@
+<extension xmlns="http://ns.adobe.com/air/extension/22.0">
+    <id>com.jollyclass.ane</id>
+    <versionNumber>1.0.0</versionNumber>
+    <platforms>
+        <platform name="Android-ARM">
+            <applicationDeployment>
+                <nativeLibrary>JollyClassAneExtension.jar</nativeLibrary>
+                <initializer>com.jollyclass.ane.JollyClassAneExtension</initializer>
+                <finalizer>com.jollyclass.ane.JollyClassAneExtension</finalizer>
+            </applicationDeployment>
+        </platform>
+    </platforms>
+</extension>
