@@ -1,0 +1,25 @@
+package com.jollyclass.airplayer.factory
+{
+	import com.jollyclass.airplayer.service.KeyCodeService;
+	import com.jollyclass.airplayer.service.impl.CommonKeyCodeServiceImpl;
+	import com.jollyclass.airplayer.service.impl.JollyClassKeyCodeServiceImpl;
+
+	public class KeyCodeServiceFactory
+	{
+		public function KeyCodeServiceFactory()
+		{
+		}
+		public static function build(cp_flag:String):KeyCodeService
+		{
+			var keyCodeService:KeyCodeService;
+			if(cp_flag=="jollyClass")
+			{
+				keyCodeService= new JollyClassKeyCodeServiceImpl();
+			}
+			else if(cp_flag=="common")
+			{
+				keyCodeService= new CommonKeyCodeServiceImpl();
+			}
+		}
+	}
+}

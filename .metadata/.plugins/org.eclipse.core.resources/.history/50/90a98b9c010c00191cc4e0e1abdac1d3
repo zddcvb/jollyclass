@@ -1,0 +1,16 @@
+package com.jollyclass.airplayer.util
+{
+	public class FileUtils
+	{
+		public function FileUtils()
+		{
+		}
+		/**
+		 * 
+		 */
+		public function writeDataToAppDictory(data:String):void
+		{
+			
+		}
+	}
+}

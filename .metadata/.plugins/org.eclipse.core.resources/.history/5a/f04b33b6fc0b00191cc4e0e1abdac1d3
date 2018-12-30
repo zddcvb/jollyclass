@@ -1,0 +1,9 @@
+package com.jollyclass.airplayer.service
+{
+	public class KeyCodeService
+	{
+		public function KeyCodeService()
+		{
+		}
+	}
+}

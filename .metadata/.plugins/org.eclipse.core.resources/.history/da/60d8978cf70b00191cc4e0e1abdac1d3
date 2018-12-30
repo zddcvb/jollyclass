@@ -1,0 +1,15 @@
+package com.jollyclass.airplayer.util
+{
+	public class KeyCodeSwitchUtils
+	{
+		public function KeyCodeSwitchUtils()
+		{
+		}
+		public static function switchKeyCodeForJollyClass(keyCode:int):int
+		{
+			var code:int;
+			
+			return code;
+		}
+	}
+}

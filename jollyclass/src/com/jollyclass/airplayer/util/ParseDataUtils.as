@@ -15,16 +15,15 @@ package com.jollyclass.airplayer.util
 		public static function parseDataFromSystem(args:Array):InvokeDataInfo
 		{
 			var dataInfo:InvokeDataInfo=new InvokeDataInfo();
-			if (args.length>0) 
+			var datas:String=args[0] as String;
+			if(datas.indexOf("result")!=-1)
 			{
-				var datas:String=args[0] as String;
 				var fullDatas:String = datas.split("=")[1];
 				var realDatas:Array = fullDatas.split("&");
 				dataInfo.swfPath=realDatas[0];
 				dataInfo.accountInfoFlag=realDatas[1];
 				return dataInfo;
 			}
-			
 			return null;
 		}
 	}

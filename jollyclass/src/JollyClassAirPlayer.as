@@ -4,11 +4,13 @@ package
 	import com.jollyclass.airplayer.constant.PathConst;
 	import com.jollyclass.airplayer.constant.SwfKeyCode;
 	import com.jollyclass.airplayer.domain.InvokeDataInfo;
+	import com.jollyclass.airplayer.factory.KeyCodeServiceFactory;
+	import com.jollyclass.airplayer.factory.impl.JollyClassKeyCodeFactoryImpl;
+	import com.jollyclass.airplayer.service.KeyCodeService;
 	import com.jollyclass.airplayer.util.AneUtils;
 	import com.jollyclass.airplayer.util.LoggerUtils;
 	import com.jollyclass.airplayer.util.ParseDataUtils;
 	import com.jollyclass.airplayer.util.ShapeUtil;
-	
 	import flash.desktop.NativeApplication;
 	import flash.display.Loader;
 	import flash.display.LoaderInfo;
@@ -68,7 +70,10 @@ package
 				logger.info(dataInfo.toString(),"");
 				AneUtils.showShortToast(dataInfo.toString());
 				readFileFromAndroidDIC(dataInfo.swfPath);
-			}			
+			}else{
+				AneUtils.sendData("当前airplayer未接收到数据");
+				onDestory();
+			}
 		}
 		/**
 		 * 从android目录下读取文件
@@ -87,7 +92,7 @@ package
 		{
 			logger.info("file don't exit","onFileErrorHandler");
 			AneUtils.sendData(MessageConst.READ_FILE_ERROR);
-			NativeApplication.nativeApplication.exit(0);
+			onDestory();
 		}
 		
 		protected  function onFileCompleteHandler(event:Event):void
@@ -139,7 +144,7 @@ package
 			addChild(_loader);
 			removeChild(screenMaskShape);
 			//开始计时
-			//startTimer();
+			startTimer();
 		}
 		/**
 		 * 开启主swf的键盘事件和循环事件
@@ -162,8 +167,10 @@ package
 		protected function onKeyDownHandler(event:KeyboardEvent):void
 		{
 			logger.info("================onkeyDownHandler================","onKeyDownHandler");
-			var keycode:int=event.keyCode;
-			event.keyCode=switchKeyCode(keycode);
+			var keyCode:int=event.keyCode;
+			AneUtils.showShortToast("映射之前的键值："+keyCode);
+			//映射代码
+			event.keyCode=switchKeyCode(keyCode);
 			if (event.keyCode==SwfKeyCode.BACK_REFLECT_CODE) 
 			{
 				onDestory();	
@@ -172,29 +179,17 @@ package
 			_mc.getParentMethod(this);			
 		}
 		/**
-		 * 映射遥控器的按键键值
+		 * 执行遥控器键值映射
 		 */
-		private function switchKeyCode(keycode:int):int{
-			var code:int;
-			switch(keycode){
-				case SwfKeyCode.ENTER_CODE:
-					code=SwfKeyCode.ENTER_REFLECT_CODE;
-					break;
-				case SwfKeyCode.LEFT_CODE:
-					code=SwfKeyCode.LEFT_REFLECT_CODE;
-					break;
-				case SwfKeyCode.RIGHT_CODE:
-					code=SwfKeyCode.RIGHT_REFLECT_CODE;
-					break;
-				case SwfKeyCode.BACK_CODE:
-				case SwfKeyCode.BACK_DEFAULT_CODE:
-					code=SwfKeyCode.BACK_REFLECT_CODE;
-					break;
-				default:
-					break;
-			}
-			return code;
+		private function switchKeyCode(keyCode:int):int
+		{
+			var keyCodeServiceFactory:KeyCodeServiceFactory=new JollyClassKeyCodeFactoryImpl();
+			var keyCodeService:KeyCodeService=keyCodeServiceFactory.build();
+			return keyCodeService.switchKeyCode(keyCode);
 		}
+		/**
+		 * 开启计时
+		 */
 		private function startTimer():void
 		{
 			timer=new Timer(10000,1);
@@ -202,6 +197,9 @@ package
 			timer.addEventListener(TimerEvent.TIMER_COMPLETE,onTimerCompleteHandler);
 			timer.start();	
 		}
+		/**
+		 * 停止计时
+		 */
 		private  function stopTimer():void
 		{
 			if (timer!=null) 
@@ -327,8 +325,12 @@ package
 		 */
 		public function onDestory():void
 		{
-			logger.info("onDestory","onDestory");
-			AneUtils.sendData(MessageConst.AIRPLAYER_EIXT);
+			logger.info("app exit","onDestory");
+			var swfName:String="";
+			if(dataInfo!=null){
+				swfName=dataInfo.swfPath.substr(dataInfo.swfPath.lastIndexOf("/")+1);
+			}
+			AneUtils.sendData(swfName+" "+MessageConst.AIRPLAYER_EIXT);
 			NativeApplication.nativeApplication.exit(0);
 		}
 	}

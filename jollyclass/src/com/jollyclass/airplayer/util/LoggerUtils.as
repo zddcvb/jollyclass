@@ -9,6 +9,7 @@ package com.jollyclass.airplayer.util
 		 * 设置需要为哪个类打印日志
 		 */
 		private var className:String;
+		
 		public function LoggerUtils(className:String)
 		{
 			this.className=className;	
@@ -19,10 +20,19 @@ package com.jollyclass.airplayer.util
 		 */
 		public function info(msg:String,functionName:String):void
 		{
-			var now_time:String=getNowTime();
-			trace(now_time+" "+className+" "+functionName+":"+msg);
+			writeFile(msg,functionName,"info");
 		}
-		
+		public function error(msg:String,functionName:String):void
+		{
+			writeFile(msg,functionName,"error");
+		}
+		private function writeFile(msg:String,functionName:String,loggerLevel:String):void
+		{
+			var now_time:String=getNowTime();
+			var data:String=now_time+" "+className+" "+functionName+" "+loggerLevel+":"+msg;
+			var fileUtils:FileUtils=new FileUtils();
+			fileUtils.writeDataToAppDictory(data+"\n",now_time.split(" ")[0]);
+		}
 		private function getNowTime():String
 		{
 			var date_time:Date=new Date();

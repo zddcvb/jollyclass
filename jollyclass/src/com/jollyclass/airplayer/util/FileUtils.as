@@ -1,43 +1,51 @@
 package com.jollyclass.airplayer.util
 {
-	import com.jollyclass.airplayer.constant.MessageConst;
-	
-	import flash.desktop.NativeApplication;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.filesystem.File;
-	import flash.utils.ByteArray;
-
+	import flash.filesystem.FileMode;
+	import flash.filesystem.FileStream;
+	/**
+	 * 文件读写功能
+	 */
 	public class FileUtils
 	{
 		private static var logger:LoggerUtils=new LoggerUtils("com.jollyclass.airplayer.util.FileUtils");
-		public  static var fileData:ByteArray;
 		public function FileUtils()
 		{
 		}
-		public static function readFile(filePath:String):void
+		/**
+		 * 将数据写入固定的目录当中，即写入到sd卡中的目录jollyclass_air_player中的log+当天日期.txt中
+		 */
+		public  function writeDataToAppDictory(data:String,dateTime:String):void
 		{
-			if (filePath!=null) 
+			var fs:FileStream=null;
+			try
 			{
-				var file:File=new File(filePath);
-				file.addEventListener(Event.COMPLETE,onFileCompleteHandler);
-				file.addEventListener(IOErrorEvent.IO_ERROR,onFileErrorHandler);
-				file.load();
+				var logParentFilePath:String="file:///storage/emulated/0/jollyclass_air_player/log"+dateTime+".txt";
+				var file:File=new File(logParentFilePath);
+				 fs=new FileStream();
+				fs.openAsync(file,FileMode.APPEND);
+				fs.addEventListener(Event.COMPLETE,onCompleteHandler);
+				fs.addEventListener(IOErrorEvent.IO_ERROR,onErrorHandler);
+				fs.writeUTFBytes(data);
+				fs.close();
+			} 
+			catch(error:Error) 
+			{
+				error.getStackTrace();
+				logger.error(error.getStackTrace(),"writeDataToAppDictory");
 			}
 		}
 		
-		protected static function onFileErrorHandler(event:IOErrorEvent):void
-		{
-			logger.info("file don't exit","onFileErrorHandler");
-			AneUtils.sendData(MessageConst.READ_FILE_ERROR);
-			NativeApplication.nativeApplication.exit(0);
+		protected function onCompleteHandler(event:Event):void
+		{	
+			logger.info("文件读取成功","onCompleteHandler");
 		}
 		
-		protected static function onFileCompleteHandler(event:Event):void
+		protected function onErrorHandler(event:IOErrorEvent):void
 		{
-			logger.info("onFileCompleteHandler","onFileCompleteHandler");
-			fileData=event.currentTarget.data;	
-			AneUtils.showToast("fileData"+fileData.toString());
+			logger.error("文件读取失败","writeDataToAppDictory");
 		}
 	}
 }

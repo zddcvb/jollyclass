@@ -1,0 +1,20 @@
+package com.jollyclass.airplayer.util
+{
+	import flash.filesystem.File;
+
+	public class FileUtils
+	{
+		public function FileUtils()
+		{
+		}
+		/**
+		 * 将数据写入固定的目录当中，即写入到sd卡中的目录jollyclass_air_player中的log+当天日期.txt中
+		 */
+		public function writeDataToAppDictory(data:String):void
+		{
+			var logParentFilePath:String="file:///storage/emulated/0/jollyclass_air_player";
+			var file:File=new File(logParentFilePath);
+			file.createDirectory();
+		}
+	}
+}

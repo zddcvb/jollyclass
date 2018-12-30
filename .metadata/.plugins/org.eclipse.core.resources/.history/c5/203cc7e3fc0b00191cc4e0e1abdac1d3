@@ -1,0 +1,13 @@
+package com.jollyclass.airplayer.service
+{
+	public class KeyCodeService
+	{
+		public function KeyCodeService()
+		{
+		}
+		public function switchKeyCode(keyCode:int):int
+		{
+			return keyCode;
+		}
+	}
+}
