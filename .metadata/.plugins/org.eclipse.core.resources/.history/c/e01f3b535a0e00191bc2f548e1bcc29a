@@ -1,0 +1,24 @@
+package
+{
+	import com.adobe.serialization.json.JSON;
+	
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
+	
+	public class demophone extends Sprite
+	{
+		public function demophone()
+		{
+			super();
+			
+			// 支持 autoOrient
+			stage.align = StageAlign.TOP_LEFT;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			var obj:Object=new Object();
+			obj.name="jack";
+			obj.age=20;
+			var encode:String = com.adobe.serialization.json.JSON.encode("");
+		}
+	}
+}

@@ -12,6 +12,7 @@ package com.jollyclass.airane
 		private static const SHOW_SHORT_TOAST:String="toastShortFunction";
 		private static const OPEN_APK:String="openApkFunction";
 		private static const SEND_BROADCAST_FUNCTION:String="sendBroadcastDataFunction";
+		private static const CUSTOMER_SEND_BROADCAST_FUNCTION:String="customerSendBroadcastDataFunction";
 		public function JollyClassAne(target:IEventDispatcher=null)
 		{
 			_context=ExtensionContext.createExtensionContext(EXTENSION_ID,"");
@@ -36,11 +37,18 @@ package com.jollyclass.airane
 				_context.call(OPEN_APK,packageName,className);
 			}
 		}
-		public function sendBroadcast(data:String):void
+		public function sendBroadcast(isPlaying:Boolean):void
 		{
 			if (_context) 
 			{
-				_context.call(SEND_BROADCAST_FUNCTION,data);
+				_context.call(SEND_BROADCAST_FUNCTION,isPlaying);
+			}
+		}
+		public function customerBroadcast(isPlaying:Boolean,action:String):void
+		{
+			if (_context) 
+			{
+				_context.call(CUSTOMER_SEND_BROADCAST_FUNCTION,isPlaying,action);
 			}
 		}
 	}

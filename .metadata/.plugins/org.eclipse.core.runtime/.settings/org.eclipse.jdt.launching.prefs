@@ -1,3 +1,3 @@
-#Sat Dec 29 20:39:25 GMT+08:00 2018
+#Sun Dec 30 16:33:31 GMT+08:00 2018
 eclipse.preferences.version=1
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1546065532427">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1546065532427" name\="Adobe Flash Builder 4.7 (64 Bit)" path\="D\:\\developTools\\adobe-AIR\\Adobe Flash Builder 4.7 (64 Bit)"/>\r\n</vmType>\r\n</vmSettings>\r\n
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1546065532427" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1546065532427" name\="Adobe Flash Builder 4.7 (64 Bit)" path\="D\:\\developTools\\adobe-AIR\\Adobe Flash Builder 4.7 (64 Bit)"/>\r\n</vmType>\r\n</vmSettings>\r\n

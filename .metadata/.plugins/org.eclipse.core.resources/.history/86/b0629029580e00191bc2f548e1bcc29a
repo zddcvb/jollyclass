@@ -1,0 +1,9 @@
+package com.adobe.serialization.json
+{
+	public class JSONParseError
+	{
+		public function JSONParseError()
+		{
+		}
+	}
+}

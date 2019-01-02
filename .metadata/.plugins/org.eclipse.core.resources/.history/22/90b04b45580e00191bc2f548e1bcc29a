@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.adobe.serialization.json.JSONTokenizer"/>
+    <classEntry path="com.adobe.serialization.json.JSONToken"/>
+    <classEntry path="com.adobe.serialization.json.JSONTokenType"/>
+    <classEntry path="com.adobe.serialization.json.JSONParseError"/>
+    <classEntry path="com.adobe.serialization.json.JSONEncoder"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

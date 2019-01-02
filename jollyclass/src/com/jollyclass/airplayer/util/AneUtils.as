@@ -11,11 +11,20 @@ package com.jollyclass.airplayer.util
 		{
 		}
 		/**
-		 * 发送广播数据至android应用
+		 * 发送广播数据至android应用，固定的action：android.intent.action.AIR_DATA
 		 */
-		public static function sendData(data:String):void
+		public static function sendData(isPlaying:Boolean):void
 		{
-			jollyClassAne.sendBroadcast(data);
+			jollyClassAne.sendBroadcast(isPlaying)
+		}
+		/**
+		 * 发送广播只android应用，自定义action
+		 * @param data 需要发送的数据
+		 * @param action 需要发送的广播
+		 */
+		public static  function sendDataFromAction(isPlaying:Boolean,action:String):void
+		{
+			jollyClassAne.customerBroadcast(isPlaying,action);
 		}
 		/**
 		 * 显示toast信息,易LENGTH_LONG的时间显示

@@ -1,0 +1,13 @@
+package com.jollyclass.airplayer.domain
+{
+	import flash.sampler.Sample;
+
+	public class AirPlayerSendInfo
+	{
+		private var _msg:String;
+		private var _type:int;
+		public function AirPlayerSendInfo()
+		{
+		}
+	}
+}

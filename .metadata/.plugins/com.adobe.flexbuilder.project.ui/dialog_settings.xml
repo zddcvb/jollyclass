@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="ExportSigningOptions">
 		<list key="certificates">
+			<item value=""/>
 			<item value="C:\Users\Administrator\Desktop\toastAne\key.p12"/>
 		</list>
 	</section>

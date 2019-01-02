@@ -15,13 +15,16 @@ package com.jollyclass.airplayer.util
 			this.className=className;	
 		}
 		/**
-		 * 日常信息级别的打印
+		 * 日常信息级别的打印-info
 		 * functionName：设置哪个函数的日志信息
 		 */
 		public function info(msg:String,functionName:String):void
 		{
 			writeFile(msg,functionName,"info");
 		}
+		/**
+		 * 异常信息级别的打印-error
+		 */
 		public function error(msg:String,functionName:String):void
 		{
 			writeFile(msg,functionName,"error");
