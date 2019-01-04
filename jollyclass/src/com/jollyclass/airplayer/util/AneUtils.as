@@ -12,6 +12,7 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 发送广播数据至android应用，固定的action：android.intent.action.AIR_DATA
+		 * @param isPlaying 当前swf是否播放
 		 */
 		public static function sendData(isPlaying:Boolean):void
 		{
@@ -19,8 +20,11 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 发送广播只android应用，自定义action
-		 * @param data 需要发送的数据
+		 * @param isPlaying swf是否播放
 		 * @param action 需要发送的广播
+		 * @param resourceName swf的名称
+		 * @param playTime swf当前播放的时长
+		 * @param totalTime swf的总时长
 		 */
 		public static  function sendDataFromAction(isPlaying:Boolean,action:String,resourceName:String,playTime:String,totalTime:String):void
 		{

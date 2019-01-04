@@ -2,7 +2,17 @@ package com.jollyclass.airplayer.domain
 {
 	public class InvokeDataInfo
 	{
+		/**
+		 * swf在android目录中的绝对路径
+		 * file:///storage/emulated/0/1/大声说爱_故事理解.swf
+		 */
 		private var _swfPath:String;
+		/**
+		 * 0://已付费会员可以正常播放
+		 * 1://未开通服务且未绑定园所（播放10s,弹出扫码关联园所窗口）
+	     * 2://未开通服务已经绑定园所（播放10s,弹出开通服务窗口）
+		 * 3://开通服务已到期;（播放10s,弹出开通服务窗口）
+		 */
 		private var _accountInfoFlag:Number;
 		public function InvokeDataInfo()
 		{

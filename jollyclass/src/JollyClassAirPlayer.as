@@ -348,7 +348,7 @@ package
 			if(dataInfo!=null){
 				var swfPath:String=dataInfo.swfPath;
 				var fileName:String=swfPath.substr(swfPath.lastIndexOf("/")+1);
-				exitInfo.resource_name=fileName;
+				exitInfo.resource_name=fileName.replace(".swf","");
 				//获取总时长
 				var total_time:String=getSwfTimeFormatter(_mc.totalFrames);
 				var play_time:String=getSwfTimeFormatter(_mc.currentFrame);
