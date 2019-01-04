@@ -1,0 +1,15 @@
+package com.jollyclass.airplayer.domain
+{
+	import flash.sampler.Sample;
+
+	public class AirPlayerExitInfo
+	{
+		private var _isPlaying:Boolean;
+		private var _resource_name:String;
+		private var _play_time:String;
+		private var total_time:String;
+		public function AirPlayerExitInfo()
+		{
+		}
+	}
+}

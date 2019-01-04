@@ -2,6 +2,7 @@ package
 {
 	import com.jollyclass.airplayer.constant.PathConst;
 	import com.jollyclass.airplayer.constant.SwfKeyCode;
+	import com.jollyclass.airplayer.domain.AirPlayerExitInfo;
 	import com.jollyclass.airplayer.domain.InvokeDataInfo;
 	import com.jollyclass.airplayer.factory.KeyCodeServiceFactory;
 	import com.jollyclass.airplayer.factory.impl.JollyClassKeyCodeFactoryImpl;
@@ -10,7 +11,6 @@ package
 	import com.jollyclass.airplayer.util.LoggerUtils;
 	import com.jollyclass.airplayer.util.ParseDataUtils;
 	import com.jollyclass.airplayer.util.ShapeUtil;
-	
 	import flash.desktop.NativeApplication;
 	import flash.display.Loader;
 	import flash.display.LoaderInfo;
@@ -31,6 +31,7 @@ package
 	import flash.system.LoaderContext;
 	import flash.utils.ByteArray;
 	import flash.utils.Timer;
+
 	public class JollyClassAirPlayer extends Sprite
 	{
 		private static var logger:LoggerUtils=new LoggerUtils("JollyClassAirPlayer");
@@ -52,6 +53,7 @@ package
 		
 		public function onStart():void{
 			logger.info("airplayer onStart","onStart");
+			addMainApplicationKeyEvent();
 			screenMaskShape=ShapeUtil.createShape();
 			addChild(screenMaskShape);
 			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE,onInvokeHandler);
@@ -121,7 +123,7 @@ package
 		}
 		protected function onSwfInitHandler(event:Event):void
 		{
-			AneUtils.showShortToast("onSwfInitHandler");
+			//AneUtils.showShortToast("onSwfInitHandler");
 		}
 		
 		protected function onIOErrorHandler(event:IOErrorEvent):void
@@ -138,9 +140,9 @@ package
 		protected function onCompleteHandler(event:Event):void
 		{
 			logger.info("load swf complete","onCompleteHandler");
-			AneUtils.showShortToast("loadSwf onCompleteHandler");
+			//AneUtils.showShortToast("loadSwf onCompleteHandler");
 			var _loaderInfo:LoaderInfo=event.currentTarget as LoaderInfo;
-			addMainApplicationKeyEvent();
+			
 			_mc = event.target.content as MovieClip;
 			addChild(_loader);
 			removeChild(screenMaskShape);
@@ -158,7 +160,7 @@ package
 		private function addMainApplicationKeyEvent():void
 		{
 			stage.addEventListener(KeyboardEvent.KEY_DOWN,onKeyDownHandler);
-			stage.addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);	
+			//stage.addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);	
 		}
 		/**
 		 * 循环获取当前swf文件的帧数
@@ -174,7 +176,7 @@ package
 		{
 			logger.info("================onkeyDownHandler================","onKeyDownHandler");
 			var keyCode:int=event.keyCode;
-			AneUtils.showShortToast("映射之前的键值："+keyCode);
+			//AneUtils.showShortToast("映射之前的键值："+keyCode);
 			//映射代码
 			event.keyCode=switchKeyCode(keyCode);
 			if (event.keyCode==SwfKeyCode.BACK_REFLECT_CODE) 
@@ -279,7 +281,7 @@ package
 		{
 			_mc.stopAllMovieClips();
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN,onKeyDownHandler);
-			stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);	
+			//stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);	
 		}
 		
 		private function initDialogSwf():void{
@@ -291,7 +293,7 @@ package
 		protected function onDialogKeyDown(event:KeyboardEvent):void
 		{
 			event.keyCode=switchKeyCode(event.keyCode);
-			AneUtils.showShortToast("当前键值代码："+event.keyCode+":当前帧数"+_dialog_mc.currentFrame)
+			//AneUtils.showShortToast("当前键值代码："+event.keyCode+":当前帧数"+_dialog_mc.currentFrame)
 			if (event.keyCode==SwfKeyCode.BACK_REFLECT_CODE) 
 			{
 				onDestory();
@@ -331,8 +333,47 @@ package
 		public function onDestory():void
 		{
 			logger.info("app exit","onDestory");
-			AneUtils.sendData(false);
+			var exitInfo:AirPlayerExitInfo=getExitInfo();
+			AneUtils.sendDataFromAction(exitInfo.isPlaying,PathConst.APK_BROADCAST,exitInfo.resource_name,exitInfo.play_time,exitInfo.total_time);
 			NativeApplication.nativeApplication.exit(0);
+		}
+		/**
+		 * 获得退出的信息
+		 */
+		private function getExitInfo():AirPlayerExitInfo
+		{
+			//获取文件名称：
+			var exitInfo:AirPlayerExitInfo=new AirPlayerExitInfo();
+			exitInfo.isPlaying=false;
+			if(dataInfo!=null){
+				var swfPath:String=dataInfo.swfPath;
+				var fileName:String=swfPath.substr(swfPath.lastIndexOf("/")+1);
+				exitInfo.resource_name=fileName;
+				//获取总时长
+				var total_time:String=getSwfTimeFormatter(_mc.totalFrames);
+				var play_time:String=getSwfTimeFormatter(_mc.currentFrame);
+				exitInfo.play_time=play_time;
+				exitInfo.total_time=total_time;
+			}
+			logger.info(exitInfo.toString(),"getExitInfo");
+			return exitInfo;
+		}
+		/**
+		 * 获取影片剪辑的时长，并转换
+		 */
+		private function getSwfTimeFormatter(frames:int):String
+		{
+			var tmp:Number=Math.round(frames/24);
+			var minutes:String=Math.round(tmp/60)+"";
+			var seconds:String=Math.round(tmp%60)+"";
+			if(parseInt(minutes)<10){
+				minutes="0"+minutes;
+			}
+			if(parseInt(seconds)<10){
+				seconds="0"+seconds;
+			}
+			var total_time:String=minutes+":"+seconds;
+			return total_time;
 		}
 	}
 }

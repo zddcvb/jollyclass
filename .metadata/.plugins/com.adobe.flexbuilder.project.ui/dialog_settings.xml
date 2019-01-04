@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item value="true" key="com.adobe.flexbuilder.project.ui.use.default.location"/>
+	<item value="true" key="com.adobe.flexbuilder.project.ui.library.use.air.config"/>
+	<item value="true" key="com.adobe.flexbuilder.project.ui.last.apptype"/>
+	<item value="false" key="com.adobe.flexbuilder.project.ui.library.use.multiplatform.config"/>
 	<section name="ExportSigningOptions">
 		<list key="certificates">
+			<item value="C:\Users\Administrator\Desktop\ane文件\jollyclass-key.p12"/>
+			<item value="C:\Users\Administrator\Desktop\jollyclass-key.p12"/>
 			<item value=""/>
 			<item value="C:\Users\Administrator\Desktop\toastAne\key.p12"/>
 		</list>

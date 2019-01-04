@@ -13,8 +13,11 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="AneUtils" key="selection"/>
+		<item value="addMainApplicationKeyEvent" key="selection"/>
 		<list key="findhistory">
+			<item value="addMainApplicationKeyEvent"/>
+			<item value="ENTER_FRAME"/>
+			<item value="loadDialogSwf"/>
 			<item value="AneUtils"/>
 		</list>
 		<list key="replacehistory">

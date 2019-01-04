@@ -22,9 +22,9 @@ package com.jollyclass.airplayer.util
 		 * @param data 需要发送的数据
 		 * @param action 需要发送的广播
 		 */
-		public static  function sendDataFromAction(isPlaying:Boolean,action:String):void
+		public static  function sendDataFromAction(isPlaying:Boolean,action:String,resourceName:String,playTime:String,totalTime:String):void
 		{
-			jollyClassAne.customerBroadcast(isPlaying,action);
+			jollyClassAne.customerBroadcast(isPlaying,action,resourceName,playTime,totalTime);
 		}
 		/**
 		 * 显示toast信息,易LENGTH_LONG的时间显示

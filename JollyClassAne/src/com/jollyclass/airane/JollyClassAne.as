@@ -44,11 +44,11 @@ package com.jollyclass.airane
 				_context.call(SEND_BROADCAST_FUNCTION,isPlaying);
 			}
 		}
-		public function customerBroadcast(isPlaying:Boolean,action:String):void
+		public function customerBroadcast(isPlaying:Boolean,action:String,resourceName:String,playTime:String,totalTime:String):void
 		{
 			if (_context) 
 			{
-				_context.call(CUSTOMER_SEND_BROADCAST_FUNCTION,isPlaying,action);
+				_context.call(CUSTOMER_SEND_BROADCAST_FUNCTION,isPlaying,action,resourceName,playTime,totalTime);
 			}
 		}
 	}
