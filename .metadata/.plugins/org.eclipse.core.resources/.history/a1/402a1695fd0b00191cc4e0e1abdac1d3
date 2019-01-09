@@ -1,9 +1,0 @@
-package com.jollyclass.airplayer.factory
-{
-	public class KeyCodeServiceFactory
-	{
-		public function KeyCodeServiceFactory()
-		{
-		}
-	}
-}

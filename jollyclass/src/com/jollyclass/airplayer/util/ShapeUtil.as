@@ -14,7 +14,6 @@ package com.jollyclass.airplayer.util
 		 */
 		public static function createShape():Shape
 		{
-			
 			var shape:Shape=new Shape();
 			shape.graphics.beginFill(0x000000,1);
 			shape.graphics.drawRect(0,0,1920,1080);

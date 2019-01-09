@@ -1,9 +1,0 @@
-package com.jollyclass.airplayer.util
-{
-	public class FileUtisl
-	{
-		public function FileUtisl()
-		{
-		}
-	}
-}

@@ -18,11 +18,16 @@ package com.jollyclass.airplayer.util
 		{
 			var dataInfo:InvokeDataInfo=new InvokeDataInfo();
 			var datas:String=args[0] as String;
-			var fullDatas:String = datas.substr(datas.indexOf("result"));
-			var realDatas:Array = fullDatas.split("&");
-			dataInfo.swfPath=realDatas[0].split("=")[1];
-			dataInfo.accountInfoFlag=realDatas[1].split("=")[1];
-			return dataInfo;
+			var resultIndex:int=datas.indexOf("result");
+			var statusIndex:int=datas.indexOf("status");
+			if(resultIndex!=-1&&statusIndex!=-1){
+				var fullDatas:String = datas.substr(datas.indexOf("result"));
+				var realDatas:Array = fullDatas.split("&");
+				dataInfo.swfPath=realDatas[0].split("=")[1];
+				dataInfo.accountInfoFlag=realDatas[1].split("=")[1];
+				return dataInfo;
+			}
+			return null;
 		}
 	}
 }

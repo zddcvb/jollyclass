@@ -13,12 +13,14 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="addMainApplicationKeyEvent" key="selection"/>
+		<item value="showShortToast" key="selection"/>
 		<list key="findhistory">
+			<item value="showShortToast"/>
+			<item value="AneUtils"/>
+			<item value="logger"/>
 			<item value="addMainApplicationKeyEvent"/>
 			<item value="ENTER_FRAME"/>
 			<item value="loadDialogSwf"/>
-			<item value="AneUtils"/>
 		</list>
 		<list key="replacehistory">
 		</list>

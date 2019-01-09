@@ -34,18 +34,18 @@ package com.jollyclass.airplayer.util
 			catch(error:Error) 
 			{
 				error.getStackTrace();
-				logger.error(error.getStackTrace(),"writeDataToAppDictory");
+				//logger.error(error.getStackTrace(),"writeDataToAppDictory");
 			}
 		}
 		
 		protected function onCompleteHandler(event:Event):void
 		{	
-			logger.info("文件读取成功","onCompleteHandler");
+			//logger.info("文件读取成功","onCompleteHandler");
 		}
 		
 		protected function onErrorHandler(event:IOErrorEvent):void
 		{
-			logger.error("文件读取失败","writeDataToAppDictory");
+			//logger.error("文件读取失败","writeDataToAppDictory");
 		}
 	}
 }

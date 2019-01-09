@@ -1,7 +1,0 @@
-package com.jollyclass.airplayer.service
-{
-	public interface KeyCodeService
-	{
-		public function switchKeyCode(keyCode:int):int;
-	}
-}
