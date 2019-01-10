@@ -1,9 +1,0 @@
-package com.adobe.serialization.json
-{
-	public class JSONTokenType
-	{
-		public function JSONTokenType()
-		{
-		}
-	}
-}

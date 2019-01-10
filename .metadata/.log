@@ -1274,3 +1274,338 @@ java.lang.Exception
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:45)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2019-01-10 11:11:19.005 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_31
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 4 273 2019-01-10 11:16:37.999
+!MESSAGE 删除资源时遇到问题。
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2019-01-10 11:16:37.999
+!MESSAGE 不能删除“/jollyclass_inter/libs”。
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: 删除资源时遇到问题。
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:387)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:837)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1939)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:344)
+	at org.eclipse.ui.ide.undo.WorkspaceUndoUtil.delete(WorkspaceUndoUtil.java:799)
+	at org.eclipse.ui.ide.undo.WorkspaceUndoUtil.delete(WorkspaceUndoUtil.java:191)
+	at org.eclipse.ui.ide.undo.AbstractResourcesOperation.delete(AbstractResourcesOperation.java:119)
+	at org.eclipse.ui.ide.undo.DeleteResourcesOperation.doExecute(DeleteResourcesOperation.java:67)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation$1.run(AbstractWorkspaceOperation.java:206)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation.execute(AbstractWorkspaceOperation.java:204)
+	at com.adobe.flexbuilder.editors.derived.ui.navigator.FlexResourceDeleteAction$2.run(FlexResourceDeleteAction.java:980)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: 删除文件时遇到了问题。
+Contains: 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs\JollyClassAne.ane。
+Contains: 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs。
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2019-01-10 11:16:37.999
+!MESSAGE 删除资源时遇到问题。
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2019-01-10 11:16:37.999
+!MESSAGE 删除文件时遇到了问题。
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2019-01-10 11:16:37.999
+!MESSAGE 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs\JollyClassAne.ane。
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2019-01-10 11:16:37.999
+!MESSAGE 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs。
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2019-01-10 11:16:37.999
+!MESSAGE 不能删除“G:\jollyclass_animate\jollyclass\jollyclass_inter”。
+
+!ENTRY com.adobe.flexbuilder.project 4 43 2019-01-10 11:16:38.264
+!MESSAGE Avoiding non-existent source container src while figuring out files to copy to output folder.
+!STACK 0
+java.lang.Exception
+	at com.adobe.flexbuilder.project.compiler.internal.BuilderUtils.copyDependents(BuilderUtils.java:497)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexProjectBuilder.build(FlexProjectBuilder.java:512)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexIncrementalBuilder.build(FlexIncrementalBuilder.java:171)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY com.adobe.flexbuilder.project 4 43 2019-01-10 11:16:39.325
+!MESSAGE Avoiding non-existent source container src while figuring out files to copy to output folder.
+!STACK 0
+java.lang.Exception
+	at com.adobe.flexbuilder.project.compiler.internal.BuilderUtils.copyDependents(BuilderUtils.java:497)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexProjectBuilder.build(FlexProjectBuilder.java:512)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexIncrementalBuilder.build(FlexIncrementalBuilder.java:171)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 273 2019-01-10 11:16:48.676
+!MESSAGE 删除资源时遇到问题。
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2019-01-10 11:16:48.676
+!MESSAGE 不能删除“/jollyclass_inter/libs”。
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: 删除资源时遇到问题。
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.delete(FileSystemResourceManager.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFolder(ResourceTree.java:352)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:387)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:837)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1939)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:344)
+	at org.eclipse.ui.ide.undo.WorkspaceUndoUtil.delete(WorkspaceUndoUtil.java:799)
+	at org.eclipse.ui.ide.undo.WorkspaceUndoUtil.delete(WorkspaceUndoUtil.java:191)
+	at org.eclipse.ui.ide.undo.AbstractResourcesOperation.delete(AbstractResourcesOperation.java:119)
+	at org.eclipse.ui.ide.undo.DeleteResourcesOperation.doExecute(DeleteResourcesOperation.java:67)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation$1.run(AbstractWorkspaceOperation.java:206)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation.execute(AbstractWorkspaceOperation.java:204)
+	at com.adobe.flexbuilder.editors.derived.ui.navigator.FlexResourceDeleteAction$2.run(FlexResourceDeleteAction.java:980)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: 删除文件时遇到了问题。
+Contains: 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs\JollyClassAne.ane。
+Contains: 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs。
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2019-01-10 11:16:48.677
+!MESSAGE 删除资源时遇到问题。
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2019-01-10 11:16:48.677
+!MESSAGE 删除文件时遇到了问题。
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2019-01-10 11:16:48.677
+!MESSAGE 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs\JollyClassAne.ane。
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2019-01-10 11:16:48.677
+!MESSAGE 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs。
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2019-01-10 11:16:48.677
+!MESSAGE 不能删除“G:\jollyclass_animate\jollyclass\jollyclass_inter”。
+
+!ENTRY com.adobe.flexbuilder.project 4 43 2019-01-10 11:16:48.830
+!MESSAGE Avoiding non-existent source container src while figuring out files to copy to output folder.
+!STACK 0
+java.lang.Exception
+	at com.adobe.flexbuilder.project.compiler.internal.BuilderUtils.copyDependents(BuilderUtils.java:497)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexProjectBuilder.build(FlexProjectBuilder.java:512)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexIncrementalBuilder.build(FlexIncrementalBuilder.java:171)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 273 2019-01-10 11:16:58.920
+!MESSAGE 删除资源时遇到问题。
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2019-01-10 11:16:58.920
+!MESSAGE 不能删除“G:\jollyclass_animate\jollyclass\jollyclass_inter\libs\JollyClassAne.ane”。
+!STACK 1
+org.eclipse.core.runtime.CoreException: 删除文件时遇到了问题。
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:125)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1931)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:780)
+	at org.eclipse.ui.ide.undo.WorkspaceUndoUtil.delete(WorkspaceUndoUtil.java:811)
+	at org.eclipse.ui.ide.undo.WorkspaceUndoUtil.delete(WorkspaceUndoUtil.java:191)
+	at org.eclipse.ui.ide.undo.AbstractResourcesOperation.delete(AbstractResourcesOperation.java:119)
+	at org.eclipse.ui.ide.undo.DeleteResourcesOperation.doExecute(DeleteResourcesOperation.java:67)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation$1.run(AbstractWorkspaceOperation.java:206)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation.execute(AbstractWorkspaceOperation.java:204)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.execute(DefaultOperationHistory.java:513)
+	at com.adobe.flexbuilder.editors.derived.ui.navigator.FlexResourceDeleteAction$2.run(FlexResourceDeleteAction.java:985)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs\JollyClassAne.ane。
+!SUBENTRY 2 org.eclipse.core.filesystem 4 273 2019-01-10 11:16:58.921
+!MESSAGE 删除文件时遇到了问题。
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2019-01-10 11:16:58.921
+!MESSAGE 未能删除：G:\jollyclass_animate\jollyclass\jollyclass_inter\libs\JollyClassAne.ane。
+
+!ENTRY com.adobe.flexbuilder.project 4 43 2019-01-10 11:17:21.656
+!MESSAGE Initializing to Flash Builder locale as Flex SDK Locale not found from flex-config.xml file
+!STACK 0
+java.lang.Exception
+	at com.adobe.flexbuilder.project.internal.FlexProjectCore.createErrorStatus(FlexProjectCore.java:1020)
+	at com.adobe.flexbuilder.util.logging.GlobalLogImpl.log(GlobalLogImpl.java:66)
+	at com.adobe.flexbuilder.util.logging.GlobalLog.log(GlobalLog.java:52)
+	at com.adobe.flexbuilder.project.sdks.FlexSDK.getFlexLocale(FlexSDK.java:256)
+	at com.adobe.flexbuilder.project.actionscript.internal.ActionScriptProjectSettings.initializeDefaults(ActionScriptProjectSettings.java:1479)
+	at com.adobe.flexbuilder.project.actionscript.internal.ActionScriptProjectSettings.<init>(ActionScriptProjectSettings.java:359)
+	at com.adobe.flexbuilder.project.internal.FlexProjectSettings.<init>(FlexProjectSettings.java:90)
+	at com.adobe.flexbuilder.project.FlexProjectManager.createFlexProjectDescription(FlexProjectManager.java:419)
+	at com.adobe.flexbuilder.codemodel.internal.project.ExternalProject$ExternalProjectSpecification.getExternalProjectLibraryPath(ExternalProject.java:194)
+	at com.adobe.flexbuilder.codemodel.internal.project.ExternalProject$ExternalProjectSpecification.<init>(ExternalProject.java:221)
+	at com.adobe.flexbuilder.codemodel.internal.project.ExternalProject.<init>(ExternalProject.java:79)
+	at com.adobe.flexbuilder.codemodel.internal.project.EclipseProjectListener.getExternalProject(EclipseProjectListener.java:1004)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getExternalProject(ProjectManager.java:837)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.isExternalFile(ProjectManager.java:827)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getCMProjectForFile(ProjectManager.java:494)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getProjectForFile(ProjectManager.java:300)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getCompilerProjectForFile(ProjectManager.java:355)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getCompilerProjectForFile(ProjectManager.java:383)
+	at com.adobe.flexbuilder.codemodel.internal.project.EclipseProjectListener.findIncludingFiles(EclipseProjectListener.java:396)
+	at com.adobe.flexbuilder.codemodel.internal.project.EclipseProjectListener.access$1(EclipseProjectListener.java:395)
+	at com.adobe.flexbuilder.codemodel.internal.project.EclipseProjectListener$ResourceChangeListener.resourceChanged(EclipseProjectListener.java:190)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2353)
+	at org.eclipse.ui.ide.undo.AbstractWorkspaceOperation.execute(AbstractWorkspaceOperation.java:204)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.execute(DefaultOperationHistory.java:513)
+	at org.eclipse.ui.actions.CopyProjectOperation$1.run(CopyProjectOperation.java:164)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.jface 2 0 2019-01-10 11:20:45.764
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2019-01-10 11:20:45.764
+!MESSAGE A conflict occurred for CTRL+G:
+Binding(CTRL+G,
+	ParameterizedCommand(Command(com.adobe.flexbuilder.as.editor.find.all.declarations.in.workspace,在工作空间中查找所有声明,
+		,
+		Category(com.adobe.flexbuilder.editorcore.navigation.category,导航,null,true),
+		LegacyHandlerWrapper(ActionHandler(action=com.adobe.flexbuilder.as.editor.ui.actions.FindAllDeclarationsAction@76a65bc3)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.adobe.flexide.editorcore.flexEditorScope,,,system)
+Binding(CTRL+G,
+	ParameterizedCommand(Command(com.adobe.flexbuilder.as.editor.find.all.declarations.in.workspace,在工作空间中查找所有声明,
+		,
+		Category(com.adobe.flexbuilder.editorcore.navigation.category,导航,null,true),
+		LegacyHandlerWrapper(ActionHandler(action=com.adobe.flexbuilder.as.editor.ui.actions.FindAllDeclarationsAction@76a65bc3)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.adobe.flexbuilder.as.editor.context.packageexplorer,,,system)
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.declarations.in.workspace,工作空间中的声明,
+		在工作空间中搜索对所选元素的声明,
+		Category(org.eclipse.search.ui.category.search,搜索,搜索命令类别,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2019-01-10 11:20:45.764
+!MESSAGE A conflict occurred for CTRL+SHIFT+G:
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(com.adobe.flexbuilder.as.editor.find.all.references.in.workspace,在工作空间中查找所有引用,
+		,
+		Category(com.adobe.flexbuilder.editorcore.navigation.category,导航,null,true),
+		LegacyHandlerWrapper(ActionHandler(action=com.adobe.flexbuilder.as.editor.ui.actions.FindAllReferencesAction@23d29c10)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.adobe.flexide.editorcore.flexEditorScope,,,system)
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(com.adobe.flexbuilder.as.editor.find.all.references.in.workspace,在工作空间中查找所有引用,
+		,
+		Category(com.adobe.flexbuilder.editorcore.navigation.category,导航,null,true),
+		LegacyHandlerWrapper(ActionHandler(action=com.adobe.flexbuilder.as.editor.ui.actions.FindAllReferencesAction@23d29c10)),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.adobe.flexbuilder.as.editor.context.packageexplorer,,,system)
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace,工作空间中的引用,
+		在工作空间中搜索对所选元素的引用,
+		Category(org.eclipse.search.ui.category.search,搜索,搜索命令类别,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.adobe.flexbuilder.project 4 43 2019-01-10 11:21:17.013
+!MESSAGE An implementation for native extension 'com.jollyclass.ane' required by the application was not found for the target platform.
+!STACK 0
+java.lang.Exception
+	at com.adobe.flexbuilder.project.internal.FlexProjectCore.createErrorStatus(FlexProjectCore.java:1020)
+	at com.adobe.flexbuilder.util.logging.GlobalLogImpl.log(GlobalLogImpl.java:66)
+	at com.adobe.flexbuilder.util.logging.GlobalLog.log(GlobalLog.java:52)
+	at com.adobe.flexbuilder.multisdk.apollo.export.AIRAPKPackager.createUsingPackager(AIRAPKPackager.java:248)
+	at com.adobe.flexbuilder.multisdk.apollo.export.AIRAPKPackager.create(AIRAPKPackager.java:575)
+	at com.adobe.flexbuilder.multisdk.apollo.export.AIRAPKPackager.create(AIRAPKPackager.java:138)
+	at com.adobe.flexide.multiplatform.android.exportrelease.AndroidExportReleaseHandler.createPackage(AndroidExportReleaseHandler.java:354)
+	at com.adobe.flexide.multiplatform.android.exportrelease.AndroidExportReleaseHandler.doPackage(AndroidExportReleaseHandler.java:258)
+	at com.adobe.flashbuilder.project.multiplatform.ui.exportrelease.MultiPlatformExportReleaseVersionManager.doExport(MultiPlatformExportReleaseVersionManager.java:317)
+	at com.adobe.flexbuilder.exportimport.releaseversion.ui.ExportReleaseVersionWizard$1.run(ExportReleaseVersionWizard.java:221)
+
+!ENTRY org.eclipse.core.resources 4 1 2019-01-10 11:23:32.110
+!MESSAGE 刷新本地更改时发生了问题
+!SUBENTRY 1 org.eclipse.core.resources 4 1 2019-01-10 11:23:32.110
+!MESSAGE 刷新本地更改时发生了问题
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: 刷新本地文件系统中的资源时出错。
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:923)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:904)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1657)
+	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:167)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Contains: 缺少“jollyclass_inter”的项目描述文件（.project）。此文件包含有关项目的重要信息。项目将在复原此文件之后才能正常工作。
+!SUBENTRY 2 org.eclipse.core.resources 4 271 2019-01-10 11:23:32.110
+!MESSAGE 刷新本地文件系统中的资源时出错。
+!SUBENTRY 3 org.eclipse.core.resources 4 567 2019-01-10 11:23:32.110
+!MESSAGE 缺少“jollyclass_inter”的项目描述文件（.project）。此文件包含有关项目的重要信息。项目将在复原此文件之后才能正常工作。
+
+!ENTRY com.adobe.flexbuilder.project 4 43 2019-01-10 11:23:32.257
+!MESSAGE Avoiding non-existent source container src while figuring out files to copy to output folder.
+!STACK 0
+java.lang.Exception
+	at com.adobe.flexbuilder.project.compiler.internal.BuilderUtils.copyDependents(BuilderUtils.java:497)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexProjectBuilder.build(FlexProjectBuilder.java:512)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexIncrementalBuilder.build(FlexIncrementalBuilder.java:171)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 2 2 2019-01-10 11:25:31.265
+!MESSAGE 保存操作警告。
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2019-01-10 11:25:31.265
+!MESSAGE 缺少“jollyclass_inter”的项目描述文件（.project）。此文件包含有关项目的重要信息。已经创建了新项目描述文件，但是可能缺少有关项目的某些信息。
+
+!ENTRY com.adobe.flexbuilder.project 4 43 2019-01-10 11:25:37.942
+!MESSAGE Avoiding non-existent source container src while figuring out files to copy to output folder.
+!STACK 0
+java.lang.Exception
+	at com.adobe.flexbuilder.project.compiler.internal.BuilderUtils.copyDependents(BuilderUtils.java:497)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexProjectBuilder.build(FlexProjectBuilder.java:512)
+	at com.adobe.flexbuilder.project.compiler.internal.FlexIncrementalBuilder.build(FlexIncrementalBuilder.java:171)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
