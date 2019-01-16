@@ -13,6 +13,7 @@ package com.jollyclass.airane
 		private static const OPEN_APK:String="openApkFunction";
 		private static const SEND_BROADCAST_FUNCTION:String="sendBroadcastDataFunction";
 		private static const CUSTOMER_SEND_BROADCAST_FUNCTION:String="customerSendBroadcastDataFunction";
+		private static const SEND_ERROR_FUNCTION:String="sendErrorMsgFunction";
 		public function JollyClassAne(target:IEventDispatcher=null)
 		{
 			_context=ExtensionContext.createExtensionContext(EXTENSION_ID,"");
@@ -44,11 +45,18 @@ package com.jollyclass.airane
 				_context.call(SEND_BROADCAST_FUNCTION,isPlaying);
 			}
 		}
-		public function customerBroadcast(isPlaying:Boolean,action:String,resourceName:String,playTime:String,totalTime:String):void
+		public function customerBroadcast(isPlaying:Boolean,action:String,resourceName:String,playTime:String,totalTime:String,isPlayFinished:Boolean):void
 		{
 			if (_context) 
 			{
-				_context.call(CUSTOMER_SEND_BROADCAST_FUNCTION,isPlaying,action,resourceName,playTime,totalTime);
+				_context.call(CUSTOMER_SEND_BROADCAST_FUNCTION,isPlaying,action,resourceName,playTime,totalTime,isPlayFinished);
+			}
+		}
+		public function sendErrorMsg(error_msg:String):void
+		{
+			if(_context)
+			{
+				_context.call(SEND_ERROR_FUNCTION,error_msg);
 			}
 		}
 	}

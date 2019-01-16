@@ -1,0 +1,83 @@
+﻿package 
+{
+	import flash.display.MovieClip;
+	import flash.events.KeyboardEvent;
+	
+	/**
+	 * 此代码适用于两个地方，但都是针对只有教学引导画面的动画：
+	 * 1、进入swf文件，背景音暂停，需要按确认才能播放
+	 * 2、进入swf文件，背景音播放，按确认后暂停按钮出现，背景音暂停。
+	 */
+	public class SwfTeacherAloneMusic extends MovieClip
+	{
+		
+		private var isPlay:Boolean = true;
+		private static const ENTER_CODE:int = 83;
+		/**
+		 * 1:表示进入swf文件后，背景音暂停，按钮停在第一帧
+		 * 0或者其他数字：表示进入swf文件后，背景音播放，按钮消失。
+		 */
+		private var swfType:int = 1;
+		
+		public function SwfTeacherAloneMusic()
+		{
+			// constructor code
+			//initUI();
+		}
+		private function initUI(type:int):void
+		{
+			stop();
+			swfType = type;
+			if (swfType==1)
+			{
+				stopBG();
+				isPlay = false;
+			}
+			else
+			{
+				playBG();
+			}
+			
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, bookListener);
+		}
+		private function bookListener(myEve:KeyboardEvent):void
+		{
+			if (myEve.keyCode == ENTER_CODE)
+			{
+				if (isPlay)
+				{
+					stopBG();
+				}
+				else
+				{
+					playBG();
+				}
+				isPlay = ! isPlay;
+			}
+		}
+		private function playBG():void
+		{
+			if (swfType==1)
+			{
+				button_mc.gotoAndStop(2);
+			}
+			else
+			{
+				button_mc.visible = false;
+			}
+			backGroundMusic_mc.play();
+		}
+		private function stopBG():void
+		{
+			if (swfType==1)
+			{
+				button_mc.gotoAndStop(1);
+			}
+			else
+			{
+				button_mc.visible = true;
+			}
+			backGroundMusic_mc.stop();
+		}
+	}
+}

@@ -1,0 +1,23 @@
+package com.jollyclass.airplayer.constant
+{
+	
+
+	public class ErrorMsgNumber
+	{
+		private static const FILE_NOT_EXITS:String="課件不存在";
+		public function ErrorMsgNumber()
+		{
+		}
+		public static function getErrorMsg(msgNum:String):String
+		{
+			var msg:String;
+			switch(msgNum){
+				case "ax01":
+					msg=FILE_NOT_EXITS;
+					break;
+					
+			}
+			return msg;
+		}
+	}
+}

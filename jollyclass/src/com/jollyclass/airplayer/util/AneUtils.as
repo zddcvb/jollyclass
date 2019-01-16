@@ -26,9 +26,9 @@ package com.jollyclass.airplayer.util
 		 * @param playTime swf当前播放的时长
 		 * @param totalTime swf的总时长
 		 */
-		public static  function sendDataFromAction(isPlaying:Boolean,action:String,resourceName:String,playTime:String,totalTime:String):void
+		public static  function sendDataFromAction(isPlaying:Boolean,action:String,resourceName:String,playTime:String,totalTime:String,isPlayFinished:Boolean):void
 		{
-			jollyClassAne.customerBroadcast(isPlaying,action,resourceName,playTime,totalTime);
+			jollyClassAne.customerBroadcast(isPlaying,action,resourceName,playTime,totalTime,isPlayFinished);
 		}
 		/**
 		 * 显示toast信息,易LENGTH_LONG的时间显示
@@ -51,6 +51,13 @@ package com.jollyclass.airplayer.util
 		public static function openApk(packageName:String,className:String):void
 		{
 			jollyClassAne.openApk(packageName,className);
+		}
+		/**
+		 * 上报错误信息至系统app
+		 */
+		public static function sendErrorMsg(error_msg:String):void
+		{
+			jollyClassAne.sendErrorMsg(error_msg);
 		}
 	}
 }

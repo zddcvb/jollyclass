@@ -19,8 +19,25 @@ package com.jollyclass.airplayer.domain
 		 * swf的总时长
 		 */
 		private var _total_time:String;
+		private var _isPlayFinished:Boolean;
 		public function AirPlayerExitInfo()
 		{
+		}
+
+		/**
+		 * 判断swf文件是否播放完成
+		 */
+		public function get isPlayFinished():Boolean
+		{
+			return _isPlayFinished;
+		}
+
+		/**
+		 * @private
+		 */
+		public function set isPlayFinished(value:Boolean):void
+		{
+			_isPlayFinished = value;
 		}
 
 		public function get total_time():String
@@ -64,7 +81,7 @@ package com.jollyclass.airplayer.domain
 		}
 		public function toString():String
 		{
-			return "AirPlayerExitInfo[isPlaying："+isPlaying+",resource_name:"+resource_name+",play_time:"+play_time+",total_time:"+total_time+"]";
+			return "AirPlayerExitInfo[isPlaying："+isPlaying+",resource_name:"+resource_name+",play_time:"+play_time+",total_time:"+total_time+",isPlayFinished:"+isPlayFinished+"]";
 		}
 
 	}

@@ -1,6 +1,9 @@
 package com.jollyclass.airplayer.util
 {
+	import flash.display.Bitmap;
+	import flash.display.BitmapData;
 	import flash.display.Shape;
+
 	/**
 	 * 为主应用创建各种元件
 	 */
@@ -17,6 +20,15 @@ package com.jollyclass.airplayer.util
 			var shape:Shape=new Shape();
 			shape.graphics.beginFill(0x000000,1);
 			shape.graphics.drawRect(0,0,1920,1080);
+			shape.graphics.endFill();
+			return shape;
+		}
+		
+		public static function addErrorPrompt():Shape{
+			var bitmapData:BitmapData=new BitmapData(1920,1080);
+			var shape:Shape=new Shape();
+			shape.graphics.beginBitmapFill(bitmapData,null,false,true);
+			
 			shape.graphics.endFill();
 			return shape;
 		}

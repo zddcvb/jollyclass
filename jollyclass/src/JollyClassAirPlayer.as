@@ -10,8 +10,9 @@ package
 	import com.jollyclass.airplayer.util.AneUtils;
 	import com.jollyclass.airplayer.util.LoggerUtils;
 	import com.jollyclass.airplayer.util.ParseDataUtils;
-	import com.jollyclass.airplayer.util.ShapeUtil;
+	
 	import flash.desktop.NativeApplication;
+	import flash.display.DisplayObject;
 	import flash.display.Loader;
 	import flash.display.LoaderInfo;
 	import flash.display.MovieClip;
@@ -27,6 +28,7 @@ package
 	import flash.events.TimerEvent;
 	import flash.filesystem.File;
 	import flash.net.URLRequest;
+	import flash.sampler.Sample;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
 	import flash.utils.ByteArray;
@@ -43,6 +45,11 @@ package
 		private var timer:Timer;
 		private var _dialog_loader:Loader=new Loader();
 		private var _dialog_mc:MovieClip;
+		[Embed(source="/swf/loading-teacher.swf")]
+		private var LoadingUI:Class;
+		private var loading_obj:DisplayObject;
+		private var _error_loading:Loader=new Loader();
+		private var error_info:String;
 		public function JollyClassAirPlayer()
 		{
 			super();
@@ -50,14 +57,43 @@ package
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			this.onStart();
 		}
-		
+		/**
+		 * 启动
+		 */
 		public function onStart():void{
-			//logger.info("airplayer onStart","onStart");
-			addMainApplicationKeyEvent();
-			screenMaskShape=ShapeUtil.createShape();
-			addChild(screenMaskShape);
+			showLoadingUI();
 			NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE,onInvokeHandler);
 			NativeApplication.nativeApplication.addEventListener(Event.DEACTIVATE,onDeactivateHandler);
+		}
+		/**
+		 * 添加加载动画
+		 */
+		private function showLoadingUI():void
+		{
+			loading_obj=new LoadingUI();
+			addChild(loading_obj);	
+		}
+		
+		/**
+		 * 显示错误对话框，提示用户拨打客服电话
+		 */
+		private function showErroMsg(info:String):void
+		{
+			_error_loading.load(new URLRequest(PathConst.ERROR_SWF));
+			_error_loading.contentLoaderInfo.addEventListener(Event.COMPLETE,function(event:Event):void{
+				addChild(_error_loading);
+				var error_mc:MovieClip=event.target.content as MovieClip;
+				error_mc.setText(info);
+				initErrorKeyEvent();
+			});
+		}	
+		/**
+		 * 上报错误信息以及显示错误ui
+		 */
+		private function sendAndShowErrorMsg(info:String):void
+		{
+			AneUtils.sendErrorMsg(info);
+			showErroMsg(info);
 		}
 		/**
 		 * 监听应用状态为不激活状态时，则直接退出应用。
@@ -76,13 +112,35 @@ package
 			if (args.length>0) 
 			{
 				dataInfo=ParseDataUtils.parseDataFromSystem(args);
-				//logger.info(dataInfo.toString(),"");
-				//AneUtils.showShortToast(dataInfo.toString());
 				if(dataInfo!=null){
 					readFileFromAndroidDIC(dataInfo.swfPath);
+				}else{
+					sendAndShowErrorMsg("jx01");
 				}
 			}else{
-				onDestory();
+				sendAndShowErrorMsg("jx02");
+			}
+		}
+		
+		private function initErrorKeyEvent():void
+		{
+			stage.addEventListener(KeyboardEvent.KEY_DOWN,onErrorKeyDown);
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN,onKeyDownHandler);			
+		}
+		
+		protected function onErrorKeyDown(event:KeyboardEvent):void
+		{
+			var keycode:int=event.keyCode;
+			switch(keycode){
+				case SwfKeyCode.BACK_CODE:
+				case SwfKeyCode.BACK_DEFAULT_CODE:
+				case SwfKeyCode.ENTER_CODE:
+					AneUtils.sendData(false);
+					NativeApplication.nativeApplication.exit(0);
+					break;
+				default:
+					logger.info(keycode+"","");
+					break;
 			}
 		}
 		/**
@@ -93,29 +151,30 @@ package
 			if (swfPath!=null) 
 			{
 				var file:File=new File(swfPath);
-				file.addEventListener(Event.COMPLETE,onFileCompleteHandler);
-				file.addEventListener(IOErrorEvent.IO_ERROR,onFileErrorHandler);
-				try
-				{
-					file.load();//load方法是异步加载，只有等load完成才能获取子swf文件的数据
-				} 
-				catch(error:Error) 
-				{
-					logger.error(error.message,"readFileFromAndroidDIC");
+				if(file.exists){
+					file.addEventListener(Event.COMPLETE,onFileCompleteHandler);
+					file.addEventListener(IOErrorEvent.IO_ERROR,onFileErrorHandler);
+					try
+					{
+						file.load();//load方法是异步加载，只有等load完成才能获取子swf文件的数据
+					} 
+					catch(error:Error) 
+					{
+						logger.error(error.message,"readFileFromAndroidDIC");
+					}
+				}else{
+					sendAndShowErrorMsg("jx03");
 				}
-				
 			}
 		}
 		protected  function onFileErrorHandler(event:IOErrorEvent):void
 		{
-			logger.error("file don't exit","onFileErrorHandler");
-			onDestory();
+			sendAndShowErrorMsg("jx04");
 		}
 		
 		protected  function onFileCompleteHandler(event:Event):void
 		{
-			//logger.info("onFileCompleteHandler","onFileCompleteHandler");
-			var fileData:ByteArray=event.currentTarget.data;	
+			var fileData:ByteArray=event.currentTarget.data;
 			loadSwfFileFromBytes(fileData);
 		}
 		/**
@@ -136,9 +195,8 @@ package
 			} 
 			catch(error:Error) 
 			{
-				logger.error(error.message,"loadSwfFileFromBytes");
-			}
-			
+				sendAndShowErrorMsg("jx05");
+			}			
 		}
 		protected function onSwfInitHandler(event:Event):void
 		{
@@ -147,8 +205,7 @@ package
 		
 		protected function onIOErrorHandler(event:IOErrorEvent):void
 		{
-			logger.error("load swf error","onIOErrorHandler");
-			onDestory();
+			sendAndShowErrorMsg("jx06");
 		}
 		
 		protected function onProgressHandler(event:ProgressEvent):void
@@ -163,7 +220,7 @@ package
 			var _loaderInfo:LoaderInfo=event.currentTarget as LoaderInfo;
 			_mc = event.target.content as MovieClip;
 			addChild(_loader);
-			removeChild(screenMaskShape);
+			removeChild(loading_obj);
 			AneUtils.sendData(true);
 			//开始计时
 			if(dataInfo.accountInfoFlag==0){
@@ -350,9 +407,9 @@ package
 		 */
 		public function onDestory():void
 		{
-			logger.info("app exit","onDestory");
+			//logger.info("app exit","onDestory");
 			var exitInfo:AirPlayerExitInfo=getExitInfo();
-			AneUtils.sendDataFromAction(exitInfo.isPlaying,PathConst.APK_BROADCAST,exitInfo.resource_name,exitInfo.play_time,exitInfo.total_time);
+			AneUtils.sendDataFromAction(exitInfo.isPlaying,PathConst.APK_BROADCAST,exitInfo.resource_name,exitInfo.play_time,exitInfo.total_time,exitInfo.isPlayFinished);
 			NativeApplication.nativeApplication.exit(0);
 		}
 		/**
@@ -372,6 +429,12 @@ package
 				var play_time:String=getSwfTimeFormatter(_mc.currentFrame);
 				exitInfo.play_time=play_time;
 				exitInfo.total_time=total_time;
+				//判断是否播放完成
+				if((_mc.totalFrames-_mc.currentFrame)<=10){
+					exitInfo.isPlayFinished=true;
+				}else{
+					exitInfo.isPlayFinished=false;
+				}
 			}
 			//logger.info(exitInfo.toString(),"getExitInfo");
 			return exitInfo;

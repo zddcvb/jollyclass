@@ -18,8 +18,8 @@ package com.jollyclass.airplayer.util
 		{
 			var dataInfo:InvokeDataInfo=new InvokeDataInfo();
 			var datas:String=args[0] as String;
-			var resultIndex:int=datas.indexOf("result");
-			var statusIndex:int=datas.indexOf("status");
+			var resultIndex:int=datas.indexOf("result=");
+			var statusIndex:int=datas.indexOf("status=");
 			if(resultIndex!=-1&&statusIndex!=-1){
 				var fullDatas:String = datas.substr(datas.indexOf("result"));
 				var realDatas:Array = fullDatas.split("&");

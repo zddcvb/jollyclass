@@ -1,9 +1,0 @@
-package com.jollyclass.airplayer.domain
-{
-	public class AirPlayerExitInfo
-	{
-		public function AirPlayerExitInfo()
-		{
-		}
-	}
-}

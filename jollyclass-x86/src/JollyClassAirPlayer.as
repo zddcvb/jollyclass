@@ -352,7 +352,7 @@ package
 		{
 			logger.info("app exit","onDestory");
 			var exitInfo:AirPlayerExitInfo=getExitInfo();
-			AneUtils.sendDataFromAction(exitInfo.isPlaying,PathConst.APK_BROADCAST,exitInfo.resource_name,exitInfo.play_time,exitInfo.total_time);
+			AneUtils.sendDataFromAction(exitInfo.isPlaying,PathConst.APK_BROADCAST,exitInfo.resource_name,exitInfo.play_time,exitInfo.total_time,exitInfo.isPlayFinished);
 			NativeApplication.nativeApplication.exit(0);
 		}
 		/**
@@ -372,6 +372,12 @@ package
 				var play_time:String=getSwfTimeFormatter(_mc.currentFrame);
 				exitInfo.play_time=play_time;
 				exitInfo.total_time=total_time;
+				//判断是否播放完成
+				if((_mc.totalFrames-_mc.currentFrame)<=10){
+					exitInfo.isPlayFinished=true;
+				}else{
+					exitInfo.isPlayFinished=false;
+				}
 			}
 			//logger.info(exitInfo.toString(),"getExitInfo");
 			return exitInfo;

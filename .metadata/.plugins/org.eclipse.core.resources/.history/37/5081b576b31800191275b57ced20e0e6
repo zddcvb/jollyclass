@@ -1,0 +1,22 @@
+package com.jollyclass.airplayer.constant
+{
+	import flash.sampler.Sample;
+
+	public class ErrorMsgNumber
+	{
+		
+		public function ErrorMsgNumber()
+		{
+		}
+		public static function getErrorMsg(msgNum:String):String
+		{
+			var msg:String;
+			switch(msgNum){
+				case "ax01":
+					break;
+					
+			}
+			return msg;
+		}
+	}
+}
