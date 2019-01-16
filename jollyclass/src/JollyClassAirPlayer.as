@@ -2,14 +2,15 @@ package
 {
 	import com.jollyclass.airplayer.constant.PathConst;
 	import com.jollyclass.airplayer.constant.SwfKeyCode;
-	import com.jollyclass.airplayer.domain.AirPlayerExitInfo;
 	import com.jollyclass.airplayer.domain.InvokeDataInfo;
+	import com.jollyclass.airplayer.domain.SwfInfo;
 	import com.jollyclass.airplayer.factory.KeyCodeServiceFactory;
 	import com.jollyclass.airplayer.factory.impl.JollyClassKeyCodeFactoryImpl;
 	import com.jollyclass.airplayer.service.KeyCodeService;
 	import com.jollyclass.airplayer.util.AneUtils;
 	import com.jollyclass.airplayer.util.LoggerUtils;
 	import com.jollyclass.airplayer.util.ParseDataUtils;
+	import com.jollyclass.airplayer.util.SwfInfoUtils;
 	
 	import flash.desktop.NativeApplication;
 	import flash.display.DisplayObject;
@@ -28,7 +29,6 @@ package
 	import flash.events.TimerEvent;
 	import flash.filesystem.File;
 	import flash.net.URLRequest;
-	import flash.sampler.Sample;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
 	import flash.utils.ByteArray;
@@ -408,53 +408,11 @@ package
 		public function onDestory():void
 		{
 			//logger.info("app exit","onDestory");
-			var exitInfo:AirPlayerExitInfo=getExitInfo();
+			var exitInfo:SwfInfo=SwfInfoUtils.getSwfInfo(dataInfo,_mc);
 			AneUtils.sendDataFromAction(exitInfo.isPlaying,PathConst.APK_BROADCAST,exitInfo.resource_name,exitInfo.play_time,exitInfo.total_time,exitInfo.isPlayFinished);
 			NativeApplication.nativeApplication.exit(0);
 		}
-		/**
-		 * 获得退出的信息
-		 */
-		private function getExitInfo():AirPlayerExitInfo
-		{
-			//获取文件名称：
-			var exitInfo:AirPlayerExitInfo=new AirPlayerExitInfo();
-			exitInfo.isPlaying=false;
-			if(dataInfo!=null){
-				var swfPath:String=dataInfo.swfPath;
-				var fileName:String=swfPath.substr(swfPath.lastIndexOf("/")+1);
-				exitInfo.resource_name=fileName.replace(".swf","");
-				//获取总时长
-				var total_time:String=getSwfTimeFormatter(_mc.totalFrames);
-				var play_time:String=getSwfTimeFormatter(_mc.currentFrame);
-				exitInfo.play_time=play_time;
-				exitInfo.total_time=total_time;
-				//判断是否播放完成
-				if((_mc.totalFrames-_mc.currentFrame)<=10){
-					exitInfo.isPlayFinished=true;
-				}else{
-					exitInfo.isPlayFinished=false;
-				}
-			}
-			//logger.info(exitInfo.toString(),"getExitInfo");
-			return exitInfo;
-		}
-		/**
-		 * 获取影片剪辑的时长，并转换
-		 */
-		private function getSwfTimeFormatter(frames:int):String
-		{
-			var tmp:Number=Math.round(frames/24);
-			var minutes:String=Math.round(tmp/60)+"";
-			var seconds:String=Math.round(tmp%60)+"";
-			if(parseInt(minutes)<10){
-				minutes="0"+minutes;
-			}
-			if(parseInt(seconds)<10){
-				seconds="0"+seconds;
-			}
-			var total_time:String=minutes+":"+seconds;
-			return total_time;
-		}
+		
+		
 	}
 }

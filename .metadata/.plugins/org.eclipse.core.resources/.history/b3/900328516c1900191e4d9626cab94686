@@ -1,0 +1,12 @@
+package com.jollyclass.airplayer.domain
+{
+	public class SwfInfo
+	{
+		private var _swfName:String;
+		private var _swfNowTime:String;
+		private var _swfTotalTime:String;
+		public function SwfInfo()
+		{
+		}
+	}
+}

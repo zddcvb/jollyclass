@@ -1,0 +1,16 @@
+package com.jollyclass.airplayer.util
+{
+	
+	public class ResourceShow
+	{
+		[Embed(source="/swf/loading-teacher.swf")]
+		private var LoadingUI:Class;
+		public function ResourceShow()
+		{
+		}
+		public static function showLoadingUI():void
+		{
+			
+		}
+	}
+}
