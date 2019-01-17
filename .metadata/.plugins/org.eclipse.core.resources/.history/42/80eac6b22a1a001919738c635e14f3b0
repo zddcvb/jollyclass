@@ -1,0 +1,57 @@
+package com.jollyclass.airplayer.domain
+{
+	import flash.sampler.Sample;
+	
+	/**
+	 * 公共参数：
+	 product_type:产品类型--teachingbox代表教学盒子；familybox代表客厅盒子；
+	 resource_type:资源类型--xsd代表小水滴资源；other代表第三方资源；
+	 教学盒子专有参数：
+	 teaching_status=0://已付费会员可以正常播放
+	 teaching_status=1://未开通服务且未绑定园所（播放10s,弹出扫码关联园所窗口）
+	 teaching_status=2://未开通服务已经绑定园所（播放10s,弹出开通服务窗口）
+	 teaching_status=3://开通服务已到期;（播放10s,弹出开通服务窗口）
+	 teaching_resource_id：资源id--123456
+	 客厅盒子专有参数：
+	 family_media_id：媒资id--1234
+	 family_material_id:素材id--123456
+	 */
+	public class JollyClassDataInfo
+	{
+		private var _swfPath:String;
+		private var _product_type:String;
+		private var _resource_type:String;
+		private var _teaching_status:int;
+		private var _teaching_resource_id:String;
+		private var _family_media_id:String;
+		private var _family_material_id:String;
+		public function JollyClassDataInfo()
+		{
+		}
+
+		public function get product_type():String
+		{
+			return _product_type;
+		}
+
+		public function set product_type(value:String):void
+		{
+			_product_type = value;
+		}
+
+		
+		public function get swfPath():String
+		{
+			return _swfPath;
+		}
+
+		/**
+		 * @private
+		 */
+		public function set swfPath(value:String):void
+		{
+			_swfPath = value;
+		}
+
+	}
+}

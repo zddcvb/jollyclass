@@ -169,7 +169,7 @@ package
 			if(dataInfo.accountInfoFlag==0){
 				stopTimer();
 			}else{
-				startTimer();
+				//startTimer();
 			}
 		}
 		/**
