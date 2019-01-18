@@ -12,8 +12,9 @@ package com.jollyclass.airane
 		private static const SHOW_SHORT_TOAST:String="toastShortFunction";
 		private static const OPEN_APK:String="openApkFunction";
 		private static const SEND_BROADCAST_FUNCTION:String="sendBroadcastDataFunction";
-		private static const CUSTOMER_SEND_BROADCAST_FUNCTION:String="customerSendBroadcastDataFunction";
 		private static const SEND_ERROR_FUNCTION:String="sendErrorMsgFunction";
+		private static const FAMILY_DATA_FUNCTION:String="familySendDataFunction";
+		private static const TEACHING_DATA_FUNCTION:String="teachingSendDataFunction";
 		public function JollyClassAne(target:IEventDispatcher=null)
 		{
 			_context=ExtensionContext.createExtensionContext(EXTENSION_ID,"");
@@ -45,11 +46,18 @@ package com.jollyclass.airane
 				_context.call(SEND_BROADCAST_FUNCTION,isPlaying);
 			}
 		}
-		public function customerBroadcast(action:String,isPlaying:Boolean,isEnd:Boolean,teachingResourceId:String,familyMediaId:String,familyMaterialId:String,playTime:String,totalTime:String):void
+		public function sendFamilyData(action:String,isPlaying:Boolean,isEnd:Boolean,familyMediaId:String,familyMaterialId:String,playTime:String,totalTime:String):void
 		{
-			if (_context) 
+			if(_context)
 			{
-				_context.call(CUSTOMER_SEND_BROADCAST_FUNCTION,action,isPlaying,isEnd,teachingResourceId,familyMediaId,familyMaterialId,playTime,totalTime);
+				_context.call(FAMILY_DATA_FUNCTION,action,isPlaying,isEnd,familyMediaId,familyMaterialId,playTime,totalTime);	
+			}
+		}
+		public function sendTeachingData(action:String,isPlaying:Boolean,isEnd:Boolean,teachingResourceId:String,playTime:String,totalTime:String):void
+		{
+			if(_context)
+			{
+				_context.call(TEACHING_DATA_FUNCTION,action,isPlaying,isEnd,teachingResourceId,playTime,totalTime);	
 			}
 		}
 		public function sendErrorMsg(error_msg:String):void

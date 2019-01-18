@@ -13,7 +13,7 @@ package com.jollyclass.airplayer.constant
 		 public static const UP_CODE:int=38;
 		 public static const DOWN_CODE:int=40;
 		 /**
-		 * 映射的值
+		 * 小水滴课堂映射的值
 		  */
 		 public static const ENTER_REFLECT_CODE:int=83;
 		 public static const LEFT_REFLECT_CODE:int=76;

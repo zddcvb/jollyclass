@@ -19,17 +19,33 @@ package com.jollyclass.airplayer.util
 			jollyClassAne.sendBroadcast(isPlaying)
 		}
 		/**
-		 * 发送广播只android应用，自定义action
+		 * 发送广播只android应用，自定义action，教学端
 		 * @param isPlaying swf是否播放
 		 * @param action 需要发送的广播
-		 * @param resourceName swf的名称
+		 * @param isEnd swf播放完成
+		 * @param teachingResourceId swf的id
 		 * @param playTime swf当前播放的时长
 		 * @param totalTime swf的总时长
 		 */
-		public static  function sendDataFromAction(action:String,isPlaying:Boolean,isEnd:Boolean,teachingResourceId:String,familyMediaId:String,familyMaterialId:String,playTime:String,totalTime:String):void
+		public static  function sendTeachingData(action:String,isPlaying:Boolean,isEnd:Boolean,teachingResourceId:String,playTime:String,totalTime:String):void
 		{
-			jollyClassAne.customerBroadcast(action,isPlaying,isEnd,teachingResourceId,familyMediaId,familyMaterialId,playTime,totalTime);
+			jollyClassAne.sendTeachingData(action,isPlaying,isEnd,teachingResourceId,playTime,totalTime);
 		}
+		/**
+		 * 发送广播只android应用，自定义action，家庭端
+		 * @param isPlaying swf是否播放
+		 * @param action 需要发送的广播
+		 * @param isEnd swf播放完成
+		 * @param familyMediaId 家庭端媒资的id
+		 * @param familyMaterialId 家庭端素材id
+		 * @param playTime swf当前播放的时长
+		 * @param totalTime swf的总时长
+		 */
+		public static  function sendFamilyData(action:String,isPlaying:Boolean,isEnd:Boolean,familyMediaId:String,familyMaterialId:String,playTime:String,totalTime:String):void
+		{
+			jollyClassAne.sendFamilyData(action,isPlaying,isEnd,familyMediaId,familyMaterialId,playTime,totalTime);
+		}
+		
 		/**
 		 * 显示toast信息,易LENGTH_LONG的时间显示
 		 */

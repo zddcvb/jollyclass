@@ -617,7 +617,14 @@ package
 		public function onDestoryAndSendData():void
 		{
 			var exitInfo:SwfInfo=SwfInfoUtils.getSwfInfo(dataInfo,course_mc);
-			AneUtils.sendDataFromAction(PathConst.APK_BROADCAST,exitInfo.isPlaying,exitInfo.isEnd,exitInfo.teaching_resource_id,exitInfo.family_media_id,exitInfo.family_material_id,exitInfo.play_time,exitInfo.total_time);
+			switch(dataInfo.product_type){
+				case FieldConst.TEACHING_BOX:
+					AneUtils.sendTeachingData(PathConst.APK_BROADCAST,exitInfo.isPlaying,exitInfo.isEnd,exitInfo.teaching_resource_id,exitInfo.play_time,exitInfo.total_time);
+					break;
+				case FieldConst.FAMILY_BOX:
+					AneUtils.sendFamilyData(PathConst.APK_BROADCAST,exitInfo.isPlaying,exitInfo.isEnd,exitInfo.family_media_id,exitInfo.family_material_id,exitInfo.play_time,exitInfo.total_time);
+					break;
+			}
 			NativeApplication.nativeApplication.exit(0);
 		}
 		/**

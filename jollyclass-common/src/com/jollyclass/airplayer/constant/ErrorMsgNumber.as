@@ -2,7 +2,7 @@ package com.jollyclass.airplayer.constant
 {
 	/**
 	 * 播放器错误信息汇总，通过发送错误码，判定错误的类型
-	 * @author：
+	 * 
 	 */
 	public class ErrorMsgNumber
 	{

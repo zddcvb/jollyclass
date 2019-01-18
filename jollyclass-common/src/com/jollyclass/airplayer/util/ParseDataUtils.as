@@ -1,5 +1,6 @@
 package com.jollyclass.airplayer.util
 {
+	import com.jollyclass.airplayer.constant.FieldConst;
 	import com.jollyclass.airplayer.domain.InvokeDataInfo;
 	import com.jollyclass.airplayer.domain.JollyClassDataInfo;
 
@@ -43,22 +44,25 @@ package com.jollyclass.airplayer.util
 			var productIndex:int=datas.indexOf("product_type=");
 			var resourceIndex:int=datas.indexOf("resource_type=");
 			var serviceIndex:int=datas.indexOf("customer_service_tel=");
-			var statusIndex:int=datas.indexOf("teaching_status=");
-			var triIndex:int=datas.indexOf("teaching_resource_id=");
-			var fmiIndex:int=datas.indexOf("family_media_id=");
-			var fliIndex:int=datas.indexOf("family_material_id=");
-			if(resultIndex!=-1&&productIndex!=-1&&resourceIndex!=-1&&serviceIndex!=-1&&statusIndex!=-1&&triIndex!=-1&&fmiIndex!=-1&&fliIndex!=-1)
+			if(resultIndex!=-1&&productIndex!=-1&&resourceIndex!=-1&&serviceIndex!=-1)
 			{
 				var fullDatas:String = datas.substr(datas.indexOf("result"));
+				AneUtils.showShortToast(fullDatas);
 				var realDatas:Array = fullDatas.split("&");
 				dataInfo.swfPath=realDatas[0].split("=")[1];
 				dataInfo.product_type=realDatas[1].split("=")[1];
 				dataInfo.resource_type=realDatas[2].split("=")[1];
 				dataInfo.customer_service_tel=realDatas[3].split("=")[1];
-				dataInfo.teaching_status=realDatas[4].split("=")[1];
-				dataInfo.teaching_resource_id=realDatas[5].split("=")[1];
-				dataInfo.family_media_id=realDatas[6].split("=")[1];
-				dataInfo.family_material_id=realDatas[7].split("=")[1];
+				switch(dataInfo.product_type){
+					case FieldConst.TEACHING_BOX:
+						dataInfo.teaching_status=realDatas[4].split("=")[1];
+						dataInfo.teaching_resource_id=realDatas[5].split("=")[1];
+						break;
+					case FieldConst.FAMILY_BOX:
+						dataInfo.family_media_id=realDatas[4].split("=")[1];
+						dataInfo.family_material_id=realDatas[5].split("=")[1];
+						break;
+				}
 				return dataInfo;
 			}
 			return null;
