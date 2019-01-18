@@ -17,17 +17,19 @@ package com.jollyclass.airplayer.util
 		public static function getSwfTimeFormatter(frames:int):String
 		{
 			var tmp:Number=Math.round(frames/24);
-			var hours:String=Math.round(tmp/3600)+"";
-			var minutes:String=Math.round(tmp/60)+"";
-			var seconds:String=Math.round(tmp%60)+"";
-			if(parseInt(hours)<10){
-				hours="0"+hours;
-			}
-			if(parseInt(minutes)<10){
-				minutes="0"+minutes;
-			}
+			var hours:String=Math.floor(tmp/3600)+"";
+			var minutes:String=Math.floor(tmp/60)+"";
+			var seconds:String=Math.floor(tmp%60)+"";
+			var minutes_int:int=parseInt(minutes);
+			var hours_int:int=parseInt(hours);
 			if(parseInt(seconds)<10){
 				seconds="0"+seconds;
+			}
+			if(minutes_int<10){
+				minutes="0"+minutes_int;
+			}
+			if(hours_int<10){
+				hours="0"+hours_int;
 			}
 			var total_time:String=hours+":"+minutes+":"+seconds;
 			return total_time;
@@ -66,6 +68,13 @@ package com.jollyclass.airplayer.util
 				}
 			}
 			return exitInfo;
+		}
+		/**
+		 * 获取当前movieClip的播放进度
+		 */
+		public static function getSwfProgressRate(_mc:MovieClip):int
+		{
+			return Math.round(Math.abs(_mc.currentFrame/_mc.totalFrames)*100);
 		}
 	}
 }

@@ -1,0 +1,46 @@
+package com.jollyclass.airplayer.constant
+{
+	public class PathConst
+	{
+		/**
+		 * /swf/dailog.swf
+		 */
+		public static const DAILOG_SWF:String="/swf/dailog.swf";
+		/**
+		 * /swf/error.swf
+		 */
+		public static const ERROR_SWF:String="/swf/error.swf";
+		/**
+		 * /swf/loading-teacher.swf
+		 */
+		public static const LOADING_TEACHING_SWF:String="/swf/loading-teacher.swf";
+		/**
+		 * /swf/loading-family.swf
+		 */
+		public static const LOADING_FAMILY_SWF:String="/swf/loading-family.swf";
+		/**
+		 * /swf/player.swf
+		 */
+		public static const PLAYER_SWF:String="/swf/player.swf";
+		/**
+		 * com.ishuidi.boxproject
+		 */
+		public static const PACKAGE_NAME:String="com.ishuidi.boxproject";
+		/**
+		 * com.ishuidi.boxproject.module.more.accountaManage.ActivationProcessActivity
+		 */
+		public static const CONNECT_CLASS_NAME:String="com.ishuidi.boxproject.module.more.accountaManage.ActivationProcessActivity";
+		/**
+		 * com.ishuidi.boxproject.module.more.open_servers.OpenServerRemindActivity
+		 */
+		public static const SERVER_OPEN_NAME:String="com.ishuidi.boxproject.module.more.open_servers.OpenServerRemindActivity";
+		/**
+		 * android.intent.action.SWF_ISPLAYING
+		 */
+		public static const APK_BROADCAST:String="android.intent.action.SWF_ISPLAYING";
+		
+		public function PathConst()
+		{
+		}
+	}
+}

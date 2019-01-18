@@ -1,0 +1,12 @@
+package com.jollyclass.airplayer.constant
+{
+	public class FieldConst
+	{
+		public static const FAMILY_BOX:String="familybox";
+		public static const TEACHING_BOX:String="teachingbox";
+		public static const DEFAULT_TELPHONE:String="020-2345671";
+		public function FieldConst()
+		{
+		}
+	}
+}

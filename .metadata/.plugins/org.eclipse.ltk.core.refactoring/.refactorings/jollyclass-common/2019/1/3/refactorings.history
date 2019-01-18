@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="将资源“jollyclass-common/src/swf/dailog_swf.swf”重命名为“dialog.swf”" description="重命名资源“dailog_swf.swf”" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/swf/dailog_swf.swf" name="dialog.swf" stamp="1547778189571" updateReferences="true"/>
+</session>

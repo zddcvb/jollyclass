@@ -1,0 +1,9 @@
+package com.jollyclass.airplayer.constant
+{
+	public class FieldConst
+	{
+		public function FieldConst()
+		{
+		}
+	}
+}
