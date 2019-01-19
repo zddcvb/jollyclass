@@ -7,6 +7,7 @@ package com.jollyclass.airplayer.util
 	import flash.filesystem.FileStream;
 	/**
 	 * 文件读写功能
+	 * @author 邹丹丹
 	 */
 	public class FileUtils
 	{
@@ -16,6 +17,8 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 将数据写入固定的目录当中，即写入到sd卡中的目录jollyclass_air_player中的log+当天日期.txt中
+		 * @param data：需要写入的字符串信息
+		 * @param dateTime 日志当天的日期信息
 		 */
 		public  function writeDataToAppDictory(data:String,dateTime:String):void
 		{

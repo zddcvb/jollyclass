@@ -2,6 +2,7 @@ package com.jollyclass.airplayer.domain
 {
 	
 	/**
+	 * 小水滴课堂独有的属性字段
 	 * 公共参数：
 	 * product_type:产品类型--teachingbox代表教学盒子；familybox代表客厅盒子；
 	 * resource_type:资源类型--xsd代表小水滴资源；other代表第三方资源；
@@ -15,6 +16,8 @@ package com.jollyclass.airplayer.domain
 	 * 客厅盒子专有参数：
 	 * family_media_id：媒资id--1234
 	 * family_material_id:素材id--123456
+	 * 
+	 * @author 邹丹丹
 	 */
 	public class JollyClassDataInfo
 	{

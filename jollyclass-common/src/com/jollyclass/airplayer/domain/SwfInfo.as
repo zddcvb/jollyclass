@@ -1,6 +1,9 @@
 package com.jollyclass.airplayer.domain
 {
-
+	/**
+	 * 描述swf课件信息
+	 * @author 邹丹丹
+	 */
 	public class SwfInfo
 	{
 		/**

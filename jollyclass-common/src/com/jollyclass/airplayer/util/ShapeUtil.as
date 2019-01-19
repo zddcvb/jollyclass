@@ -1,11 +1,10 @@
 package com.jollyclass.airplayer.util
 {
-	import flash.display.Bitmap;
-	import flash.display.BitmapData;
 	import flash.display.Shape;
 
 	/**
 	 * 为主应用创建各种元件
+	 * @author 邹丹丹
 	 */
 	public class ShapeUtil
 	{
@@ -24,13 +23,5 @@ package com.jollyclass.airplayer.util
 			return shape;
 		}
 		
-		public static function addErrorPrompt():Shape{
-			var bitmapData:BitmapData=new BitmapData(1920,1080);
-			var shape:Shape=new Shape();
-			shape.graphics.beginBitmapFill(bitmapData,null,false,true);
-			
-			shape.graphics.endFill();
-			return shape;
-		}
 	}
 }

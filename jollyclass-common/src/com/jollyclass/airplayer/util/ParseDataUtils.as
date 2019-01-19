@@ -3,9 +3,10 @@ package com.jollyclass.airplayer.util
 	import com.jollyclass.airplayer.constant.FieldConst;
 	import com.jollyclass.airplayer.domain.InvokeDataInfo;
 	import com.jollyclass.airplayer.domain.JollyClassDataInfo;
-
+	
 	/**
 	 * 数据解析工具类
+	 * @author 邹丹丹
 	 */
 	public class ParseDataUtils
 	{
@@ -15,7 +16,7 @@ package com.jollyclass.airplayer.util
 		/**
 		 * 接收系统发送的数据，解析获得需要的信息，返回InvokeDataInfo
 		 * my-customuri://result=" + resouceUri+”&status=0
-		 * my-customuri://result=file:///storage/emulated/0/1/大声说爱_故事理解.swf&status=1
+		 * @param args my-customuri://result=file:///storage/emulated/0/1/大声说爱_故事理解.swf&status=1
 		 */
 		public static function parseDataFromSystem(args:Array):InvokeDataInfo
 		{
@@ -33,7 +34,7 @@ package com.jollyclass.airplayer.util
 			return null;
 		}
 		/**
-		 * my-customuri://result=" + resourceUri+”&product_type=teachingbox&resource_type=xsd&customer_service_tel=12342453&teaching_status=0&teaching_resource_id=123456
+		 * @param args my-customuri://result=" + resourceUri+”&product_type=teachingbox&resource_type=xsd&customer_service_tel=12342453&teaching_status=0&teaching_resource_id=123456
 		 * &family_media_id=1234&family_material_id=123456
 		 */
 		public static function parseDataInfo(args:Array):JollyClassDataInfo
@@ -47,7 +48,6 @@ package com.jollyclass.airplayer.util
 			if(resultIndex!=-1&&productIndex!=-1&&resourceIndex!=-1&&serviceIndex!=-1)
 			{
 				var fullDatas:String = datas.substr(datas.indexOf("result"));
-				AneUtils.showShortToast(fullDatas);
 				var realDatas:Array = fullDatas.split("&");
 				dataInfo.swfPath=realDatas[0].split("=")[1];
 				dataInfo.product_type=realDatas[1].split("=")[1];

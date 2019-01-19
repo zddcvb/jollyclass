@@ -2,6 +2,7 @@ package com.jollyclass.airplayer.constant
 {
 	/**
 	 * 特殊字段常量
+	 * @author 邹丹丹
 	 */
 	public class FieldConst
 	{

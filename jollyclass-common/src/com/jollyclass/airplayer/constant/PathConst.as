@@ -1,5 +1,9 @@
 package com.jollyclass.airplayer.constant
 {
+	/**
+	 * 管理应用所有用到的路径、包名、类名的字段
+	 * @author 邹丹丹
+	 */
 	public class PathConst
 	{
 		/**

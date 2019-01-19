@@ -3,6 +3,7 @@ package com.jollyclass.airplayer.util
 	import com.jollyclass.airane.JollyClassAne;
 	/**
 	 * 处理外部扩展ane的工具类
+	 * @author 邹丹丹
 	 */
 	public class AneUtils
 	{
@@ -48,6 +49,7 @@ package com.jollyclass.airplayer.util
 		
 		/**
 		 * 显示toast信息,易LENGTH_LONG的时间显示
+		 * @param msg 显示信息
 		 */
 		public static function showLongToast(msg:String):void
 		{
@@ -55,6 +57,7 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 显示toast信息,易LENGTH_SHORT的时间显示
+		 * @param msg 显示信息
 		 */
 		public static function showShortToast(msg:String):void
 		{
@@ -62,7 +65,8 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 打开系统apk应用
-		 * 
+		 * @param packageName 包名
+		 * @param className 类名
 		 */
 		public static function openApk(packageName:String,className:String):void
 		{
@@ -70,6 +74,7 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 上报错误信息至系统app
+		 * @param msg 错误信息
 		 */
 		public static function sendErrorMsg(error_msg:String):void
 		{

@@ -21,7 +21,9 @@ public class JollyClassAneExtensionContext extends FREContext {
 		functionMap.put("openApkFunction", new OpenApkFunction());
 		functionMap.put("sendBroadcastDataFunction",
 				new SendBroadcastDataFunction());
-		functionMap.put("customerSendBroadcastDataFunction", new CustomerSendBroadcastDataFunction());
+		functionMap.put("sendErrorMsgFunction", new SendErrorMsgFunction());
+		functionMap.put("teachingSendDataFunction", new TeachingSendDataFunction());
+		functionMap.put("familySendDataFunction", new FamilySendDataFunction());
 		return functionMap;
 	}
 

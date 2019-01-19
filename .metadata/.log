@@ -3468,3 +3468,98 @@ java.lang.Exception
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:622)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:577)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1410)
+!SESSION 2019-01-19 09:09:28.016 -----------------------------------------------
+eclipse.buildId=M20110909-1335
+java.version=1.6.0_31
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.jface 2 0 2019-01-19 09:12:58.933
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2019-01-19 09:12:58.933
+!MESSAGE A conflict occurred for CTRL+G:
+Binding(CTRL+G,
+	ParameterizedCommand(Command(com.adobe.flexbuilder.as.editor.find.all.declarations.in.workspace,在工作空间中查找所有声明,
+		,
+		Category(com.adobe.flexbuilder.editorcore.navigation.category,导航,null,true),
+		ActionHandler(com.adobe.flexbuilder.as.editor.ui.packageexplorer.actions.FlexPackageExplorerFindAllDeclarationsAction@33568c61),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.adobe.flexide.editorcore.flexEditorScope,,,system)
+Binding(CTRL+G,
+	ParameterizedCommand(Command(com.adobe.flexbuilder.as.editor.find.all.declarations.in.workspace,在工作空间中查找所有声明,
+		,
+		Category(com.adobe.flexbuilder.editorcore.navigation.category,导航,null,true),
+		ActionHandler(com.adobe.flexbuilder.as.editor.ui.packageexplorer.actions.FlexPackageExplorerFindAllDeclarationsAction@33568c61),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.adobe.flexbuilder.as.editor.context.packageexplorer,,,system)
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.declarations.in.workspace,工作空间中的声明,
+		在工作空间中搜索对所选元素的声明,
+		Category(org.eclipse.search.ui.category.search,搜索,搜索命令类别,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2019-01-19 09:12:58.933
+!MESSAGE A conflict occurred for CTRL+SHIFT+G:
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(com.adobe.flexbuilder.as.editor.find.all.references.in.workspace,在工作空间中查找所有引用,
+		,
+		Category(com.adobe.flexbuilder.editorcore.navigation.category,导航,null,true),
+		ActionHandler(com.adobe.flexbuilder.as.editor.ui.packageexplorer.actions.FlexPackageExplorerFindAllReferencesAction@771a4e9b),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.adobe.flexide.editorcore.flexEditorScope,,,system)
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(com.adobe.flexbuilder.as.editor.find.all.references.in.workspace,在工作空间中查找所有引用,
+		,
+		Category(com.adobe.flexbuilder.editorcore.navigation.category,导航,null,true),
+		ActionHandler(com.adobe.flexbuilder.as.editor.ui.packageexplorer.actions.FlexPackageExplorerFindAllReferencesAction@771a4e9b),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.adobe.flexbuilder.as.editor.context.packageexplorer,,,system)
+Binding(CTRL+SHIFT+G,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.references.in.workspace,工作空间中的引用,
+		在工作空间中搜索对所选元素的引用,
+		Category(org.eclipse.search.ui.category.search,搜索,搜索命令类别,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.adobe.flexbuilder.project 4 43 2019-01-19 10:07:05.691
+!MESSAGE Initializing to Flash Builder locale as Flex SDK Locale not found from flex-config.xml file
+!STACK 0
+java.lang.Exception
+	at com.adobe.flexbuilder.project.internal.FlexProjectCore.createErrorStatus(FlexProjectCore.java:1020)
+	at com.adobe.flexbuilder.util.logging.GlobalLogImpl.log(GlobalLogImpl.java:66)
+	at com.adobe.flexbuilder.util.logging.GlobalLog.log(GlobalLog.java:52)
+	at com.adobe.flexbuilder.project.sdks.FlexSDK.getFlexLocale(FlexSDK.java:256)
+	at com.adobe.flexbuilder.project.actionscript.internal.ActionScriptProjectSettings.initializeDefaults(ActionScriptProjectSettings.java:1479)
+	at com.adobe.flexbuilder.project.actionscript.internal.ActionScriptProjectSettings.<init>(ActionScriptProjectSettings.java:359)
+	at com.adobe.flexbuilder.project.internal.FlexProjectSettings.<init>(FlexProjectSettings.java:90)
+	at com.adobe.flexbuilder.project.FlexProjectManager.createFlexProjectDescription(FlexProjectManager.java:419)
+	at com.adobe.flexbuilder.codemodel.internal.project.ExternalProject$ExternalProjectSpecification.getExternalProjectLibraryPath(ExternalProject.java:194)
+	at com.adobe.flexbuilder.codemodel.internal.project.ExternalProject$ExternalProjectSpecification.<init>(ExternalProject.java:221)
+	at com.adobe.flexbuilder.codemodel.internal.project.ExternalProject.<init>(ExternalProject.java:79)
+	at com.adobe.flexbuilder.codemodel.internal.project.EclipseProjectListener.getExternalProject(EclipseProjectListener.java:1004)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getExternalProject(ProjectManager.java:837)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.isExternalFile(ProjectManager.java:827)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getCMProjectForFile(ProjectManager.java:494)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getProjectForFile(ProjectManager.java:300)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getCompilerProjectForFile(ProjectManager.java:355)
+	at com.adobe.flexbuilder.codemodel.internal.project.ProjectManager.getCompilerProjectForFile(ProjectManager.java:383)
+	at com.adobe.flexbuilder.codemodel.internal.project.EclipseProjectListener.findIncludingFiles(EclipseProjectListener.java:396)
+	at com.adobe.flexbuilder.codemodel.internal.project.EclipseProjectListener.access$1(EclipseProjectListener.java:395)
+	at com.adobe.flexbuilder.codemodel.internal.project.EclipseProjectListener$ResourceChangeListener.resourceChanged(EclipseProjectListener.java:190)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:395)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1530)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:45)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)

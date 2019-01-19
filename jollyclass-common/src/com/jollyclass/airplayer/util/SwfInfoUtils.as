@@ -1,11 +1,13 @@
 package com.jollyclass.airplayer.util
 {
-	import com.jollyclass.airplayer.domain.InvokeDataInfo;
 	import com.jollyclass.airplayer.domain.JollyClassDataInfo;
 	import com.jollyclass.airplayer.domain.SwfInfo;
 	
 	import flash.display.MovieClip;
-
+	/**
+	 * swf文件处理的工具类，用户获取swf文件的播放进度、播放时间、文件名称等
+	 * @author 邹丹丹
+	 */
 	public class SwfInfoUtils
 	{
 		public function SwfInfoUtils()
@@ -13,10 +15,12 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 获取影片剪辑的时长，并转换
+		 * @param frames swf文件的帧数
+		 * @return 返回一个字符串
 		 */
 		public static function getSwfTimeFormatter(frames:int):String
 		{
-			var tmp:Number=Math.round(frames/24);
+			var tmp:Number=frames/24;
 			var hours:String=Math.floor(tmp/3600)+"";
 			var minutes:String=Math.floor(tmp/60)+"";
 			var seconds:String=Math.floor(tmp%60)+"";
@@ -36,6 +40,8 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 获取swf文件的名称
+		 * @param swfPath swf文件的绝对路径
+		 * @return 返回一个swf文件的文件名称，不带后缀
 		 */
 		public static function getSwfName(swfPath:String):String
 		{
@@ -44,6 +50,9 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 获取swf的文件信息
+		 * @param dataInfo jollyclassDataInfo对象
+		 * @param _mc swf文件对象
+		 * @return SwfInfo对象
 		 */
 		public static function getSwfInfo(dataInfo:JollyClassDataInfo,_mc:MovieClip):SwfInfo
 		{
@@ -71,6 +80,8 @@ package com.jollyclass.airplayer.util
 		}
 		/**
 		 * 获取当前movieClip的播放进度
+		 * @param _mc swf文件对象
+		 * @return 获取swf文件当前的播放进度
 		 */
 		public static function getSwfProgressRate(_mc:MovieClip):int
 		{

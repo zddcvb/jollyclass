@@ -1,5 +1,9 @@
 package com.jollyclass.airplayer.domain
 {
+	/**
+	 * 第一版的数据接收的类，只针对教学端
+	 * @author 邹丹丹
+	 */
 	public class InvokeDataInfo
 	{
 		/**

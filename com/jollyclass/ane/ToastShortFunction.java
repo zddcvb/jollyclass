@@ -2,7 +2,6 @@ package com.jollyclass.ane;
 
 import android.app.Activity;
 import android.widget.Toast;
-
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
 import com.adobe.fre.FREInvalidObjectException;
