@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="_dialog_loader" key="selection"/>
+		<item value="swfInfo" key="selection"/>
 		<list key="findhistory">
-			<item value="_dialog_loader"/>
+			<item value="swfInfo"/>
+			<item value="getSwfName"/>
 			<item value="_error_loading"/>
+			<item value="sendAndShowErrorMsg"/>
+			<item value="_dialog_loader"/>
 			<item value="_player_loading"/>
 			<item value="dataInfo"/>
 			<item value="fileDataByteArray"/>
-			<item value="screenMaskShape"/>
-			<item value="error_info"/>
-			<item value="startPlayerTimer"/>
 		</list>
 		<list key="replacehistory">
 		</list>
