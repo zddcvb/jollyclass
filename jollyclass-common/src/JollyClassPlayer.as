@@ -318,7 +318,7 @@ package
 		{
 			if(course_mc!=null){
 				var _currentFrame:int=course_mc.currentFrame;
-				if(_currentFrame==course_mc.totalFrames){
+				if(_currentFrame>=course_mc.totalFrames){
 					course_mc.gotoAndStop(course_mc.totalFrames);
 					swfInfo.isPlaying=false;
 					stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
@@ -432,7 +432,8 @@ package
 		{
 			stopPlayerTimer();
 			var nextFrame:int=course_mc.currentFrame+120;
-			if(nextFrame>course_mc.totalFrames){
+			if(nextFrame>=course_mc.totalFrames){
+				stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 				nextFrame=course_mc.totalFrames;
 				course_mc.gotoAndStop(nextFrame);
 				swfInfo.isPlaying=false;
@@ -569,28 +570,11 @@ package
 			sendAndShowErrorMsg(ErrorMsgNumber.DIALOG_LAODING_ERROR,dataInfo.customer_service_tel);
 		}
 		/**
-		 * //根据账户的类型,显示关联园所，还是开启服务。
+		 * 根据账户的类型,显示关联园所，还是开启服务。
 		 */
 		private function switchConnectOrService(status:int):void
 		{
-			switch(status)
-			{
-				case 1:
-				{
-					dialog_mc.initConnectUI();
-					break;
-				}
-				case 2:
-				case 3:
-				{
-					dialog_mc.goServiceUI();
-					break;
-				}
-				default:
-				{
-					break;
-				}
-			}	
+			dialog_mc.goServiceUI();
 		}
 		/**
 		 * 暂停主swf的播放，移除键盘事件和循环事件

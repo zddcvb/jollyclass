@@ -4,7 +4,6 @@ package com.jollyclass.airplayer.util
 	import com.jollyclass.airplayer.domain.SwfInfo;
 	
 	import flash.display.MovieClip;
-	import flash.sampler.Sample;
 	import flash.utils.ByteArray;
 
 	/**

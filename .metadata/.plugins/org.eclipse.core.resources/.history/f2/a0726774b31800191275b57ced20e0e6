@@ -1,9 +1,0 @@
-package com.jollyclass.airplayer.constant
-{
-	public class ErrorMsgNumber
-	{
-		public function ErrorMsgNumber()
-		{
-		}
-	}
-}

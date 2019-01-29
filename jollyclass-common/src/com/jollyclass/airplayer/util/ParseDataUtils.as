@@ -55,8 +55,8 @@ package com.jollyclass.airplayer.util
 				dataInfo.customer_service_tel=realDatas[3].split("=")[1];
 				switch(dataInfo.product_type){
 					case FieldConst.TEACHING_BOX:
-						dataInfo.teaching_status=realDatas[4].split("=")[1];
-						dataInfo.teaching_resource_id=realDatas[5].split("=")[1];
+						dataInfo.teaching_resource_id=realDatas[4].split("=")[1];
+						dataInfo.teaching_status=realDatas[5].split("=")[1];
 						break;
 					case FieldConst.FAMILY_BOX:
 						dataInfo.family_media_id=realDatas[4].split("=")[1];

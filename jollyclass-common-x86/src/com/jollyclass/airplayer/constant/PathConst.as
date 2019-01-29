@@ -37,7 +37,7 @@ package com.jollyclass.airplayer.constant
 		/**
 		 * 开通服务类名：com.ishuidi.boxproject.module.more.open_servers.OpenServerRemindActivity
 		 */
-		public static const SERVER_OPEN_NAME:String="com.ishuidi.boxproject.module.more.open_servers.OpenServerRemindActivity";
+		public static const SERVER_OPEN_NAME:String="com.ishuidi.boxproject.module.index.OpenServiceActivity";
 		/**
 		 * 播放器发送的广播：android.intent.action.SWF_ISPLAYING
 		 */
