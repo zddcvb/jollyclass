@@ -30,6 +30,7 @@ package com.jollyclass.airplayer.constant
 		 * 通用映射为键盘正常值
 		  */
 		 public static const BACK_COMMON_CODE:int=8;
+		 
 		public function SwfKeyCode()
 		{
 		}

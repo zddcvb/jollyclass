@@ -22,9 +22,21 @@ package com.jollyclass.airplayer.domain
 		 * swf的总时长
 		 */
 		private var _total_time:String;
+		/**
+		 * swf文件是否播放完成
+		 */
 		private var _isEnd:Boolean;
+		/**
+		 * 媒资id
+		 */
 		private var _family_media_id:String;
+		/**
+		 * 素材id
+		 */
 		private var _family_material_id:String;
+		/**
+		 * 资源id
+		 */
 		private var _teaching_resource_id:String;
 		
 		public function SwfInfo()
@@ -115,7 +127,7 @@ package com.jollyclass.airplayer.domain
 		}
 		public function toString():String
 		{
-			return "AirPlayerExitInfo[isPlaying："+isPlaying+",resource_name:"+resource_name+",play_time:"+play_time+",total_time:"+total_time+",isEnd:"+_isEnd+"]";
+			return "SwfInfo[isPlaying："+isPlaying+",resource_name:"+resource_name+",play_time:"+play_time+",total_time:"+total_time+",isEnd:"+_isEnd+"]";
 		}
 
 	}

@@ -116,6 +116,9 @@ package
 			_error_loading.contentLoaderInfo.addEventListener(Event.COMPLETE,function(event:Event):void{
 				addChild(_error_loading);
 				var error_mc:MovieClip=event.target.content as MovieClip;
+				if(telNum==null||telNum==""){
+					telNum=FieldConst.DEFAULT_TELPHONE;
+				}
 				error_mc.setText(info,telNum);
 				initErrorKeyEvent();
 			});
@@ -125,7 +128,7 @@ package
 			_error_loading.load(new URLRequest(PathConst.ERROR_SWF));
 		}
 		/**
-		 * 添加播放器皮肤，获得皮肤的影片剪辑，但不显示在stage中。
+		 * 添加播放器皮肤，获得皮肤的影片剪辑,显示到界面中，但是visible属性为fasle，hiderPlayer方法即为隐藏，具体的方法执行在player.swf文件中。
 		 */
 		private function addPlayer():void
 		{
@@ -571,10 +574,29 @@ package
 		}
 		/**
 		 * 根据账户的类型,显示关联园所，还是开启服务。
+		 * @param status 账户的状态码
+		 * 			0：已付费会员可以正常播放
+		 * 			1:绑定激活码，盒子当前日期不在服务有效期内（播放10s,弹出开通服务窗口）
+		 * 			2：未开通服务（播放10s,弹出开通服务窗口）
+		 * 现有的状态码只有这三种，其中0状态码不会执行此方法，只接受1/2以及其他的状态码，除了1/2状态码之外，系统暂无规定其他的状态码。
 		 */
 		private function switchConnectOrService(status:int):void
 		{
-			dialog_mc.goServiceUI();
+			switch(status)
+			{
+				case 1:
+				case 2:
+				{
+					dialog_mc.goServiceUI();
+					break;
+				}
+					
+				default:
+				{
+					break;
+				}
+			}
+			
 		}
 		/**
 		 * 暂停主swf的播放，移除键盘事件和循环事件

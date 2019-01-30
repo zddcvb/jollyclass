@@ -3,32 +3,46 @@ package com.jollyclass.airplayer.domain
 	
 	/**
 	 * 小水滴课堂独有的属性字段
-	 * 公共参数：
-	 * product_type:产品类型--teachingbox代表教学盒子；familybox代表客厅盒子；
-	 * resource_type:资源类型--xsd代表小水滴资源；other代表第三方资源；
-	 * customer_service_tel:客服电话13632220258
-	 * 教学盒子专有参数：
-	 * teaching_status=0://已付费会员可以正常播放
-	 * teaching_status=1://未开通服务且未绑定园所（播放10s,弹出扫码关联园所窗口）
-	 * teaching_status=2://未开通服务已经绑定园所（播放10s,弹出开通服务窗口）
-	 * teaching_status=3://开通服务已到期;（播放10s,弹出开通服务窗口）
-	 * teaching_resource_id：资源id--123456
-	 * 客厅盒子专有参数：
-	 * family_media_id：媒资id--1234
-	 * family_material_id:素材id--123456
-	 * 
 	 * @author 邹丹丹
 	 */
 	public class JollyClassDataInfo
 	{
+		/**
+		 * swf文件的绝对路径
+		 */
 		private var _swfPath:String;
+		/**
+		 * 产品类型--teachingbox代表教学盒子；familybox代表客厅盒子；
+		 */
 		private var _product_type:String;
+		/**
+		 * 资源类型--xsd代表小水滴资源；other代表第三方资源；
+		 */
 		private var _resource_type:String;
+		/**
+		 * 客服电话,默认电话：020-38556685
+		 */
 		private var _customer_service_tel:String;
+		/**
+		 * 教学系统账户信息
+		 * 0:已付费会员可以正常播放
+		 * 1:绑定激活码，盒子当前日期不在服务有效期内（播放10s,弹出开通服务窗口）
+		 * 2:未开通服务（播放10s,弹出开通服务窗口）
+		 */
 		private var _teaching_status:int;
+		/**
+		 * 资源id
+		 */
 		private var _teaching_resource_id:String;
+		/**
+		 * 媒资id
+		 */
 		private var _family_media_id:String;
+		/**
+		 * 素材id
+		 */
 		private var _family_material_id:String;
+		
 		public function JollyClassDataInfo()
 		{
 		}
