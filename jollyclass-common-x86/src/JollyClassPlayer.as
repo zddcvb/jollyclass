@@ -35,6 +35,7 @@ package
 	import flash.system.LoaderContext;
 	import flash.utils.ByteArray;
 	import flash.utils.Timer;
+
 	/**
 	 * 小水滴课堂主类，启动类，通过onstart方法启动。
 	 * @author 邹丹丹
@@ -128,7 +129,7 @@ package
 			_error_loading.load(new URLRequest(PathConst.ERROR_SWF));
 		}
 		/**
-		 * 添加播放器皮肤，获得皮肤的影片剪辑，但不显示在stage中。
+		 * 添加播放器皮肤，获得皮肤的影片剪辑,显示到界面中，但是visible属性为fasle，hiderPlayer方法即为隐藏，具体的方法执行在player.swf文件中。
 		 */
 		private function addPlayer():void
 		{
@@ -327,10 +328,12 @@ package
 					stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 					onDestoryAndSendData();
 				}else{
-					player_mc.setNowTime(SwfInfoUtils.getSwfTimeFormatter(_currentFrame));
-					player_mc.setTotalTime(swfInfo.total_time);
-					var _rate:int=SwfInfoUtils.getSwfProgressRate(course_mc);;
-					player_mc.setProgressTxPlay(_rate);
+					if(player_mc){
+						player_mc.setNowTime(SwfInfoUtils.getSwfTimeFormatter(_currentFrame));
+						player_mc.setTotalTime(swfInfo.total_time);
+						var _rate:int=SwfInfoUtils.getSwfProgressRate(course_mc);;
+						player_mc.setProgressTxPlay(_rate);
+					}
 				}
 			}		
 		}
@@ -498,7 +501,7 @@ package
 			stopPlayerTimer();
 			if(isShowing){
 				player_mc. hideNameAndProgress();
-				stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
+				stage.addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 				isShowing=!isShowing;
 			}
 		}
@@ -533,7 +536,7 @@ package
 			familyTimer.addEventListener(TimerEvent.TIMER_COMPLETE,function(event:TimerEvent):void{
 				if(isShowing){
 					player_mc.hideNameAndProgress();
-					stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
+					//stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 					isShowing=false;
 					stopPlayerTimer();
 				}
@@ -643,7 +646,11 @@ package
 		 */
 		public function openServiceApk():void{
 			unloadDialogUI();
-			AneUtils.openApk(PathConst.PACKAGE_NAME,PathConst.SERVER_OPEN_NAME);
+			if(dataInfo.teaching_status==1){
+				AneUtils.openApk(PathConst.PACKAGE_NAME,PathConst.MAL_RENEW_NAME);
+			}else{
+				AneUtils.openApk(PathConst.PACKAGE_NAME,PathConst.SERVER_OPEN_NAME);
+			}
 			onDestroy();
 		}
 		/**

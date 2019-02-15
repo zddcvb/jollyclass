@@ -10,7 +10,6 @@ package
 	import com.jollyclass.airplayer.factory.impl.CommonKeyCodeFactoryImpl;
 	import com.jollyclass.airplayer.factory.impl.JollyClassKeyCodeFactoryImpl;
 	import com.jollyclass.airplayer.service.KeyCodeService;
-	import com.jollyclass.airplayer.util.AneUtils;
 	import com.jollyclass.airplayer.util.LoggerUtils;
 	import com.jollyclass.airplayer.util.ParseDataUtils;
 	import com.jollyclass.airplayer.util.ShapeUtil;
@@ -31,7 +30,6 @@ package
 	import flash.events.TimerEvent;
 	import flash.filesystem.File;
 	import flash.net.URLRequest;
-	import flash.sampler.Sample;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
 	import flash.utils.ByteArray;
@@ -132,19 +130,19 @@ package
 		 */
 		private function addPlayer():void
 		{
-			_player_loading.load(new URLRequest(PathConst.PLAYER_SWF));
-			_player_loading.contentLoaderInfo.addEventListener(Event.COMPLETE,onLoadingComplete);
+			var _context:LoaderContext=new LoaderContext();
+			_context.applicationDomain=ApplicationDomain.currentDomain;
+			_player_loading.load(new URLRequest(PathConst.PLAYER_SWF),_context);
+			_player_loading.contentLoaderInfo.addEventListener(Event.COMPLETE,function(event:Event):void{
+				player_mc=_player_loading.content as MovieClip;
+				//添加播放器皮肤，并隐藏
+				player_mc.hidePlayer();
+				addChild(_player_loading);
+			});
 			_player_loading.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,function(event:IOErrorEvent):void{
 				sendAndShowErrorMsg(ErrorMsgNumber.PLAYER_LOADING_FAILED,dataInfo.customer_service_tel);
 			});
 			
-		}
-		protected function onLoadingComplete(event:Event):void
-		{
-			player_mc=event.target.content as MovieClip;
-			//添加播放器皮肤，并隐藏
-			player_mc.hidePlayer();
-			addChild(_player_loading);
 		}
 		/**
 		 * 上报错误信息以及显示错误ui
@@ -181,7 +179,10 @@ package
 		}
 		private function loadSwf(path:String):void
 		{
-			_loader.load(new URLRequest(path));	
+			logger.info("loadSwf","");
+			var _context:LoaderContext=new LoaderContext();
+			_context.applicationDomain=ApplicationDomain.currentDomain;
+			_loader.load(new URLRequest(path),_context);	
 			_loader.contentLoaderInfo.addEventListener(Event.COMPLETE,onCompleteHandler);
 		}
 		private function initErrorKeyEvent():void
@@ -317,18 +318,23 @@ package
 		 */
 		protected function onEnterFrameHandler(event:Event):void
 		{
+			logger.info("开启循环监听","");
 			if(course_mc!=null){
 				var _currentFrame:int=course_mc.currentFrame;
 				if(_currentFrame>=course_mc.totalFrames){
 					course_mc.gotoAndStop(course_mc.totalFrames);
 					swfInfo.isPlaying=false;
 					stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
+					logger.info("播放完成","onEnterFrameHandler");
 					onDestoryAndSendData();
 				}else{
-					player_mc.setNowTime(SwfInfoUtils.getSwfTimeFormatter(_currentFrame));
-					player_mc.setTotalTime(swfInfo.total_time);
-					var _rate:int=SwfInfoUtils.getSwfProgressRate(course_mc);;
-					player_mc.setProgressTxPlay(_rate);
+					//logger.info("继续播放","onEnterFrameHandler");
+					if(player_mc){
+						player_mc.setNowTime(SwfInfoUtils.getSwfTimeFormatter(_currentFrame));
+						player_mc.setTotalTime(swfInfo.total_time);
+						var _rate:int=SwfInfoUtils.getSwfProgressRate(course_mc);;
+						player_mc.setProgressTxPlay(_rate);
+					}
 				}
 			}		
 		}
@@ -434,6 +440,7 @@ package
 		 */
 		private function playForward():void
 		{
+			
 			stopPlayerTimer();
 			var nextFrame:int=course_mc.currentFrame+120;
 			if(nextFrame>=course_mc.totalFrames){
@@ -460,6 +467,8 @@ package
 		}
 		private function setForwardAndRewind(frame:int):void
 		{
+			logger.info("setForwardAndRewind","setForwardAndRewind");
+			stage.addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 			var _rate:int=SwfInfoUtils.getSwfProgressRate(course_mc);
 			var _time:String=SwfInfoUtils.getSwfTimeFormatter(frame);
 			player_mc.setNowTime(_time);
@@ -467,7 +476,6 @@ package
 			player_mc.setProgressTxPlay(_rate);
 			player_mc.showPg();
 			swfInfo.isPlaying=true;
-			stage.addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 			isShowing=true;
 			startPlayerTimer();
 		}
@@ -499,7 +507,7 @@ package
 			stopPlayerTimer();
 			if(isShowing){
 				player_mc. hideNameAndProgress();
-				stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
+				stage.addEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 				isShowing=!isShowing;
 			}
 		}
@@ -534,7 +542,7 @@ package
 			familyTimer.addEventListener(TimerEvent.TIMER_COMPLETE,function(event:TimerEvent):void{
 				if(isShowing){
 					player_mc.hideNameAndProgress();
-					stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
+					//stage.removeEventListener(Event.ENTER_FRAME,onEnterFrameHandler);
 					isShowing=false;
 					stopPlayerTimer();
 				}

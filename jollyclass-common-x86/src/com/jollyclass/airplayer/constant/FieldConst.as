@@ -26,6 +26,7 @@ package com.jollyclass.airplayer.constant
 		 * 标识为小水滴课堂资源："xsd"
 		 */
 		public static const XSD_RESOURCES:String="xsd";
+		
 		public function FieldConst()
 		{
 		}

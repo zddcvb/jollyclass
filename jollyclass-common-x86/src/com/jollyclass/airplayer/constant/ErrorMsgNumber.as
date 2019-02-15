@@ -46,6 +46,7 @@ package com.jollyclass.airplayer.constant
 		 * jx10:加载player.swf文件失败，请检查player.swf文件是否正常。
 		 */
 		public static const PLAYER_LOADING_FAILED:String="jx10";
+		
 		public function ErrorMsgNumber()
 		{
 		}

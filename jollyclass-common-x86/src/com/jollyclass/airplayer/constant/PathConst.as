@@ -15,11 +15,11 @@ package com.jollyclass.airplayer.constant
 		 */
 		public static const ERROR_SWF:String="/swf/error.swf";
 		/**
-		 * 教学端 加载动画路径：/swf/loading-teacher.swf
+		 * 教学端加载动画路径：/swf/loading-teacher.swf
 		 */
 		public static const LOADING_TEACHING_SWF:String="/swf/loading-teacher.swf";
 		/**
-		 * 家庭端家在动画路径：/swf/loading-family.swf
+		 * 家庭端加载动画路径：/swf/loading-family.swf
 		 */
 		public static const LOADING_FAMILY_SWF:String="/swf/loading-family.swf";
 		/**
@@ -35,13 +35,17 @@ package com.jollyclass.airplayer.constant
 		 */
 		public static const CONNECT_CLASS_NAME:String="com.ishuidi.boxproject.module.more.accountaManage.ActivationProcessActivity";
 		/**
-		 * 开通服务类名：com.ishuidi.boxproject.module.more.open_servers.OpenServerRemindActivity
+		 * 开通服务类名：com.ishuidi.boxproject.module.more.open_servers.OpenServiceActivity
 		 */
 		public static const SERVER_OPEN_NAME:String="com.ishuidi.boxproject.module.index.OpenServiceActivity";
 		/**
 		 * 播放器发送的广播：android.intent.action.SWF_ISPLAYING
 		 */
 		public static const APK_BROADCAST:String="android.intent.action.SWF_ISPLAYING";
+		/**
+		 * 绑定激活码，盒子当前日期不在服务有效期内,开通服务，跳转至此activity：com.ishuidi.boxproject.module.more.open_servers.SetMalRenewActivity
+		 */;
+		public static const MAL_RENEW_NAME:String="com.ishuidi.boxproject.module.more.open_servers.SetMalRenewActivity";
 		
 		public function PathConst()
 		{

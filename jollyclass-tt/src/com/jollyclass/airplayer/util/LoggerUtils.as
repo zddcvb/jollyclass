@@ -60,7 +60,25 @@ package com.jollyclass.airplayer.util
 			var hour:Number=date_time.hours;
 			var minute:Number=date_time.minutes;
 			var second:Number=date_time.seconds;
-			var time:String=year+"-"+(month+1)+"-"+date+" "+hour+":"+minute+":"+second;
+			var h:String;
+			var m:String;
+			var s:String;
+			if(hour<10){
+				h="0"+hour;
+			}else{
+				h=hour+"";
+			}
+			if(minute<10){
+				m="0"+minute;
+			}else{
+				m=minute+"";
+			}
+			if(second<10){
+				s="0"+second;
+			}else{
+				s=second+"";
+			}
+			var time:String=year+"-"+(month+1)+"-"+date+" "+h+":"+m+":"+s;
 			return time;
 		}
 	}
