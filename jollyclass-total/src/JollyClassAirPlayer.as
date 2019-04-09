@@ -30,7 +30,6 @@ package
 	import flash.events.TimerEvent;
 	import flash.filesystem.File;
 	import flash.net.URLRequest;
-	import flash.sampler.Sample;
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
 	import flash.utils.ByteArray;

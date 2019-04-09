@@ -1,0 +1,9 @@
+package com.jollyclass.airplayer.domain
+{
+	public class DataInfo
+	{
+		public function DataInfo()
+		{
+		}
+	}
+}

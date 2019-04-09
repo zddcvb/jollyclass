@@ -1,0 +1,37 @@
+package com.jollyclass.airplayer.domain
+{
+	
+	
+	/**
+	 * 小水滴课堂独有的属性字段
+	 * @author 邹丹丹
+	 */
+	public class VrcDataInfo extends JollyClassDataInfo
+	{
+		
+		
+		private var _pacakge_name:String;
+		
+		public function VrcDataInfo()
+		{
+		}
+		
+		override public function toString():String
+		{
+			return super.toString()+"_pacakge_name:"+_pacakge_name;
+		}
+				
+
+		public function get pacakge_name():String
+		{
+			return _pacakge_name;
+		}
+
+		public function set pacakge_name(value:String):void
+		{
+			_pacakge_name = value;
+		}
+
+		
+	}
+}

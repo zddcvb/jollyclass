@@ -3,26 +3,26 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="251" key="DIALOG_WIDTH"/>
 		<item value="229" key="DIALOG_Y_ORIGIN"/>
-		<item value="399" key="DIALOG_HEIGHT"/>
 		<item value="1429" key="DIALOG_X_ORIGIN"/>
+		<item value="399" key="DIALOG_HEIGHT"/>
 		<item value="1|微软雅黑|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="sendAndShowErrorMsg" key="selection"/>
+		<item value="openApk" key="selection"/>
 		<list key="findhistory">
-			<item value="sendAndShowErrorMsg"/>
-			<item value="addPlayer"/>
-			<item value="player_mc"/>
-			<item value="course_mc"/>
-			<item value="start"/>
-			<item value="onEnterFrameHandler"/>
-			<item value="switchConnectOrService"/>
+			<item value="openApk"/>
+			<item value="open"/>
+			<item value="onpen"/>
+			<item value="onInvoke"/>
 			<item value="LOAD_SWF_ERROR"/>
+			<item value="jx06"/>
+			<item value="startPlayerTimer"/>
+			<item value="player_mc"/>
 		</list>
 		<list key="replacehistory">
 		</list>

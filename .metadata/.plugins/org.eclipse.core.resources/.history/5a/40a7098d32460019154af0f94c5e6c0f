@@ -1,0 +1,30 @@
+package
+{
+	import flash.display.Loader;
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
+	import flash.events.Event;
+	import flash.net.URLRequest;
+	
+	public class SwfPlayer extends Sprite
+	{
+		private var _loader:Loader=new Loader();
+		public function SwfPlayer()
+		{
+			super();
+			
+			// 支持 autoOrient
+			stage.align = StageAlign.TOP_LEFT;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			
+			loadSwf("");
+		}
+		
+		private function loadSwf(swfpath:String):void
+		{
+			var _urlRequest:URLRequest=new URLRequest(swfpath);	
+			_loader.contentLoaderInfo.addEventListener(Event.COMPLETED,onCompleteHandler);
+		}
+	}
+}

@@ -1,0 +1,50 @@
+package
+{
+	import flash.display.Loader;
+	import flash.display.Sprite;
+	import flash.display.StageAlign;
+	import flash.display.StageScaleMode;
+	import flash.events.Event;
+	import flash.events.IOErrorEvent;
+	import flash.net.URLRequest;
+	import flash.system.ApplicationDomain;
+	import flash.system.LoaderContext;
+	
+	public class SwfPlayer extends Sprite
+	{
+		private var _loader:Loader=new Loader();
+		private static const path:String="/swf/ai.swf";
+		public function SwfPlayer()
+		{
+			super();
+			
+			// 支持 autoOrient
+			stage.align = StageAlign.TOP_LEFT;
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			
+			loadSwf(path);
+		}
+		
+		private function loadSwf(swfpath:String):void
+		{
+			var _context:LoaderContext=new LoaderContext();
+			_context.applicationDomain=new ApplicationDomain（）；
+			var _urlRequest:URLRequest=new URLRequest(swfpath);	
+			_loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,onIOErrorHandler);
+			_loader.contentLoaderInfo.addEventListener(Event.COMPLETE,onCompleteHandler);
+			_loader.load(_urlRequest,_context);
+			
+		}
+		
+		protected function onIOErrorHandler(event:IOErrorEvent):void
+		{
+			trace("error");			
+		}
+		
+		protected function onCompleteHandler(event:Event):void
+		{
+			trace("ok");
+			addChild(_loader);
+		}
+	}
+}
